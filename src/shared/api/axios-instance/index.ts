@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getAccessToken } from '@/shared/utils/auth-tokens'
+import { clearAccessToken, getAccessToken } from '@/shared/utils/auth-tokens'
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -18,6 +18,17 @@ axiosInstance.interceptors.request.use(
     return request
   },
   (error) => Promise.reject(error)
+)
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      clearAccessToken()
+      window.location.href = '/login'
+    }
+    return Promise.reject(error)
+  }
 )
 
 export default axiosInstance

@@ -6,9 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { routes } from '@/shared/configs/routes'
 import { translateBackendError } from '@/shared/api/errors'
+import { useLogin } from '@/shared/hooks/queries'
 
 import { LoginForm } from './login-form'
-import { useLogin } from '../hooks/use-login'
 import { loginSchema, LoginSchema } from '../model/login-schema'
 import { mapLoginSchemaToLoginDto } from '../utils/mappers'
 

@@ -5,4 +5,6 @@ export const authApi = {
   login: (data: LoginDto) =>
     axiosInstance.post<LoginResponse>('/auth/login', data),
   register: (data: RegisterDto) => axiosInstance.post('/auth/register', data),
+  // TODO: add logout
+  logout: () => new Promise((resolve) => resolve(null)),
 }

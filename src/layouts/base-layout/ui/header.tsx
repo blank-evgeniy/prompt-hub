@@ -3,6 +3,7 @@ import { Button } from '@/shared/ui/button'
 import { Container } from '@/shared/ui/container'
 import { ScrollTextIcon } from 'lucide-react'
 import Link from 'next/link'
+import { HeaderActions } from './header-actions'
 
 export const Header = () => {
   return (
@@ -21,14 +22,7 @@ export const Header = () => {
           </Button>
         </div>
 
-        <div className="ml-auto flex items-center gap-4">
-          <Button asChild variant={'ghost'}>
-            <Link href={routes.auth.registration}>Регистрация</Link>
-          </Button>
-          <Button asChild>
-            <Link href={routes.auth.login}>Вход</Link>
-          </Button>
-        </div>
+        <HeaderActions className="ml-auto" />
       </Container>
     </header>
   )

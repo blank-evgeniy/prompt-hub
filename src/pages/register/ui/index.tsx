@@ -6,9 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { routes } from '@/shared/configs/routes'
 import { translateBackendError } from '@/shared/api/errors'
+import { useRegister } from '@/shared/hooks/queries'
 
 import { registerSchema, RegisterSchema } from '../model/register-schema'
-import { useRegister } from '../hooks/use-register'
 import { mapRegisterSchemaToRegisterDto } from '../utils/mappers'
 import { RegisterForm } from './register-form'
 

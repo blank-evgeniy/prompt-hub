@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getAccessToken } from './auth-tokens'
+import { getAccessToken } from '@/shared/utils/auth-tokens'
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -19,3 +19,5 @@ axiosInstance.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 )
+
+export default axiosInstance

@@ -1,31 +1,37 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import { routes } from '@/shared/configs/routes'
-import { AppLink } from '@/shared/ui/app-link'
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
-import { Input } from '@/shared/ui/input'
+import { translateBackendError } from '@/shared/api/errors'
+
+import { LoginForm } from './login-form'
+import { useLogin } from '../hooks/use-login'
+import { loginSchema, LoginSchema } from '../model/login-schema'
+import { mapLoginSchemaToLoginDto } from '../utils/mappers'
 
 export const LoginPage = () => {
-  return (
-    <Card className="relative w-full max-w-md">
-      <CardHeader>
-        <h1 className="text-center text-3xl font-semibold">Вход</h1>
-      </CardHeader>
+  const router = useRouter()
 
-      <CardContent>
-        <div className="flex flex-col gap-4">
-          <Input type="email" id="email" label="Почта" />
-          <Input type="password" id="password" label="Пароль" />
-        </div>
+  const form = useForm<LoginSchema>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    resolver: zodResolver(loginSchema),
+  })
 
-        <p className="text-center">
-          Нет аккаунта? -{' '}
-          <AppLink href={routes.auth.registration}>Зарегистрироваться</AppLink>
-        </p>
-      </CardContent>
+  const { mutate, isPending } = useLogin()
 
-      <CardFooter>
-        <Button className="w-full">Войти</Button>
-      </CardFooter>
-    </Card>
-  )
+  const onValid = (values: LoginSchema) => {
+    mutate(mapLoginSchemaToLoginDto(values), {
+      onSuccess: () => router.push(routes.public.home),
+      onError: (error) =>
+        form.setError('root', { message: translateBackendError(error) }),
+    })
+  }
+
+  return <LoginForm form={form} isLoading={isPending} onValid={onValid} />
 }

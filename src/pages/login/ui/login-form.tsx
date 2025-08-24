@@ -9,19 +9,16 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
 import { Input } from '@/shared/ui/input'
 import { ButtonLoader } from '@/shared/ui/loaders'
 import { FieldMessage } from '@/shared/ui/field-message'
-import { RegisterSchema } from '../model/register-schema'
 
-interface RegisterFormProps {
-  form: ReturnType<typeof useForm<RegisterSchema>>
+import { LoginSchema } from '../model/login-schema'
+
+interface LoginFormProps {
+  form: ReturnType<typeof useForm<LoginSchema>>
   isLoading: boolean
-  onValid: (values: RegisterSchema) => void
+  onValid: (values: LoginSchema) => void
 }
 
-export const RegisterForm = ({
-  form,
-  isLoading,
-  onValid,
-}: RegisterFormProps) => {
+export const LoginForm = ({ form, isLoading, onValid }: LoginFormProps) => {
   const {
     register,
     handleSubmit,
@@ -32,7 +29,7 @@ export const RegisterForm = ({
     <form onSubmit={handleSubmit(onValid)} className="w-full max-w-md">
       <Card className="relative">
         <CardHeader>
-          <h1 className="text-center text-3xl font-semibold">Регистрация</h1>
+          <h1 className="text-center text-3xl font-semibold">Вход</h1>
         </CardHeader>
 
         <CardContent>
@@ -43,7 +40,6 @@ export const RegisterForm = ({
               label="Почта"
               aria-invalid={errors.email ? 'true' : 'false'}
               message={errors.email?.message}
-              autoComplete="email"
               placeholder="Введите email"
               {...register('email')}
             />
@@ -54,45 +50,24 @@ export const RegisterForm = ({
               placeholder="Введите пароль"
               aria-invalid={errors.password ? 'true' : 'false'}
               message={errors.password?.message}
-              autoComplete="new-password"
               {...register('password')}
             />
-            <Input
-              id="username"
-              label="Имя пользователя"
-              placeholder="Введите имя пользователя"
-              aria-invalid={errors.username ? 'true' : 'false'}
-              message={errors.username?.message}
-              autoComplete="username"
-              {...register('username')}
-            />
-
             {errors.root?.message && (
               <FieldMessage>{errors.root.message}</FieldMessage>
             )}
           </div>
 
           <p className="text-center">
-            Уже есть аккаунт? -{' '}
-            <AppLink href={routes.auth.login}>Войти</AppLink>
+            Нет аккаунта? -{' '}
+            <AppLink href={routes.auth.registration}>
+              Зарегистрироваться
+            </AppLink>
           </p>
         </CardContent>
 
         <CardFooter>
-          <p className="text-center text-xs">
-            Регистрируясь, вы соглашаетесь с{' '}
-            <AppLink href={routes.public.privacy}>
-              политикой конфиденциальности
-            </AppLink>{' '}
-            и{' '}
-            <AppLink href={routes.public.terms}>
-              условиями использования
-            </AppLink>
-          </p>
-
-          <Button className="w-full" type="submit" disabled={isLoading}>
-            Создать аккаунт
-            {isLoading && <ButtonLoader />}
+          <Button className="w-full" disabled={isLoading}>
+            Войти {isLoading && <ButtonLoader />}
           </Button>
         </CardFooter>
       </Card>

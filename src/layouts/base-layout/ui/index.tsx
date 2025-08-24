@@ -9,7 +9,7 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <Container className="flex-1 py-6 md:py-10">{children}</Container>
+      <Container className="flex flex-1 flex-col">{children}</Container>
     </div>
   )
 }

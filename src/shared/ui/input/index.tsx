@@ -1,8 +1,10 @@
 import { cn } from '@/shared/utils/cn'
 import { Label } from '../label'
+import { FieldMessage } from '../field-message'
 
 type InputProps = React.ComponentProps<'input'> & {
   label?: string
+  message?: string
 }
 
 export const Input = ({
@@ -10,14 +12,15 @@ export const Input = ({
   type,
   ref,
   label,
+  message,
   id,
   disabled,
   ...props
 }: InputProps) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       {label && (
-        <Label htmlFor={id} data-disabled={disabled} className="text-sm">
+        <Label htmlFor={id} data-disabled={disabled} className="mb-2 text-sm">
           {label}
         </Label>
       )}
@@ -34,6 +37,8 @@ export const Input = ({
         )}
         {...props}
       />
+
+      {message && <FieldMessage className="mt-1">{message}</FieldMessage>}
     </div>
   )
 }

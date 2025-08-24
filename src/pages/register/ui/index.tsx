@@ -1,40 +1,42 @@
+'use client'
+
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import { routes } from '@/shared/configs/routes'
-import { AppLink } from '@/shared/ui/app-link'
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
-import { Input } from '@/shared/ui/input'
+import { translateBackendError } from '@/shared/api/errors'
+
+import { registerSchema, RegisterSchema } from '../model/register-schema'
+import { useRegister } from '../hooks/use-register'
+import { mapRegisterSchemaToRegisterDto } from '../utils/mappers'
+import { RegisterForm } from './register-form'
 
 export const RegisterPage = () => {
-  return (
-    <Card className="relative w-full max-w-md">
-      <CardHeader>
-        <h1 className="text-center text-3xl font-semibold">Регистрация</h1>
-      </CardHeader>
+  const router = useRouter()
 
-      <CardContent>
-        <div className="flex flex-col gap-4">
-          <Input type="email" id="email" label="Почта" />
-          <Input type="password" id="password" label="Пароль" />
-          <Input id="username" label="Имя пользователя" />
-        </div>
+  const form = useForm<RegisterSchema>({
+    defaultValues: {
+      email: '',
+      password: '',
+      username: '',
+    },
+    resolver: zodResolver(registerSchema),
+  })
 
-        <p className="text-center">
-          Уже есть аккаунт? - <AppLink href={routes.auth.login}>Войти</AppLink>
-        </p>
-      </CardContent>
+  const { mutate, isPending } = useRegister()
 
-      <CardFooter>
-        <p className="text-center text-xs">
-          Регистрируясь, вы соглашаетесь с{' '}
-          <AppLink href={routes.public.privacy}>
-            политикой конфиденциальности
-          </AppLink>{' '}
-          и{' '}
-          <AppLink href={routes.public.terms}>условиями использования</AppLink>
-        </p>
+  const onSubmit = (values: RegisterSchema) => {
+    mutate(mapRegisterSchemaToRegisterDto(values), {
+      onSuccess: () => router.push(routes.auth.login),
+      onError: (error) =>
+        form.setError('root', { message: translateBackendError(error) }),
+    })
+  }
 
-        <Button className="w-full">Создать аккаунт</Button>
-      </CardFooter>
-    </Card>
-  )
+  const onValid = (values: RegisterSchema) => {
+    onSubmit(values)
+  }
+
+  return <RegisterForm form={form} isLoading={isPending} onValid={onValid} />
 }

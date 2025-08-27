@@ -23,7 +23,7 @@ export const AuthLayout = ({ children }: AuthLayoutProps) => {
             <ScrollTextIcon />
           </Link>
 
-          <Button asChild className="text-2xl" variant={'ghost'}>
+          <Button asChild className="font-mono text-2xl" variant={'ghost'}>
             <Link href={routes.public.home}>PromptHub</Link>
           </Button>
         </div>

@@ -17,7 +17,7 @@ export const Header = () => {
             <ScrollTextIcon />
           </Link>
 
-          <Button asChild size={'sm'} variant={'ghost'}>
+          <Button asChild size={'sm'} variant={'ghost'} className="font-mono">
             <Link href={routes.public.home}>PromptHub</Link>
           </Button>
         </div>

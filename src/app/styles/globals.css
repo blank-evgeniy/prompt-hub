@@ -115,5 +115,5 @@
 body {
   background: var(--surface);
   color: var(--on-surface);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply font-sans;
 }

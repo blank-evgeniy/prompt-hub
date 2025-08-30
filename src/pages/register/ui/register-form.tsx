@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 
-import { routes } from '@/shared/configs/routes'
+import { routes } from '@/app/routes'
 import { AppLink } from '@/shared/ui/app-link'
 import { Button } from '@/shared/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'

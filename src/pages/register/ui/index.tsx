@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { routes } from '@/shared/configs/routes'
+import { routes } from '@/app/routes'
 import { translateBackendError } from '@/shared/api/errors'
 import { useRegister } from '@/shared/hooks/queries'
 

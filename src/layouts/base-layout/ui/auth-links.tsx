@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { routes } from '@/shared/configs/routes'
+import { routes } from '@/app/routes'
 import { Button } from '@/shared/ui/button'
 import { cn } from '@/shared/utils/cn'
 

@@ -9,6 +9,6 @@ export interface RegisterDto {
   password: string
 }
 
-export interface LoginResponse {
+export interface LoginResponseDto {
   accessToken: string
 }

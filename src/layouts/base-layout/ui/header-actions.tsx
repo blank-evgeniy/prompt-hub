@@ -5,6 +5,7 @@ import { useProfile } from '@/shared/hooks/queries'
 
 import { AuthLinks } from './auth-links'
 import { ProfileCard } from './profile-card'
+import { mapUserDtoToProfileCard } from '../utils/map-profile-to-ui'
 
 interface HeaderActionsProps {
   className?: string
@@ -22,6 +23,11 @@ export const HeaderActions = ({ className }: HeaderActionsProps) => {
   }
 
   if (profile) {
-    return <ProfileCard className={className} />
+    return (
+      <ProfileCard
+        data={mapUserDtoToProfileCard(profile)}
+        className={className}
+      />
+    )
   }
 }

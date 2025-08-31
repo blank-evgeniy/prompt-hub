@@ -12,6 +12,9 @@ import {
   SheetTitle,
   SheetFooter,
 } from '@/shared/ui/sheet'
+import Link from 'next/link'
+import { routes } from '@/app/routes'
+import { LogOutIcon } from 'lucide-react'
 
 interface ProfileCardProps {
   data: ProfileCardData
@@ -41,12 +44,31 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
           <SheetTitle>{username}</SheetTitle>
         </SheetHeader>
 
+        <div className="flex flex-col gap-1 px-4">
+          <Button
+            asChild
+            variant={'ghost'}
+            className="justify-start text-start"
+          >
+            <Link href={routes.profile.createPrompt}>Создать промпт</Link>
+          </Button>
+
+          <Button
+            asChild
+            variant={'ghost'}
+            className="justify-start text-start"
+          >
+            <Link href={routes.profile.myPrompts}>Мои промпты</Link>
+          </Button>
+        </div>
+
         <SheetFooter>
           <Button
             variant={'destructive'}
             disabled={isPending}
             onClick={() => mutate()}
           >
+            <LogOutIcon />
             Выйти
           </Button>
         </SheetFooter>

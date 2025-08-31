@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { clearAccessToken, getAccessToken } from '@/shared/utils/auth-tokens'
+import { clearAccessToken, getAccessToken } from '../tokens/auth-tokens'
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,

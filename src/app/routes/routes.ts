@@ -9,4 +9,9 @@ export const routes = {
     login: '/login',
     registration: '/register',
   },
+
+  profile: {
+    myPrompts: '/prompts',
+    createPrompt: '/prompts/create',
+  },
 }

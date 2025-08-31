@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { authApi } from '@/shared/api/services'
 import { LoginDto } from '@/shared/api/types'
-import { saveAccessToken } from '@/shared/utils/auth-tokens'
+import { saveAccessToken } from '@/shared/api/tokens/auth-tokens'
 
 import { queryKeyService } from './query-key-service'
 

@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { ACCESS_TOKEN_KEY } from '../consts'
+import { ACCESS_TOKEN_KEY } from './consts'
 
 export const getAccessToken = () => {
   const authToken = Cookies.get(ACCESS_TOKEN_KEY)

@@ -15,6 +15,7 @@ import {
 import Link from 'next/link'
 import { routes } from '@/app/routes'
 import { LogOutIcon } from 'lucide-react'
+import { useState } from 'react'
 
 interface ProfileCardProps {
   data: ProfileCardData
@@ -25,6 +26,8 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
   const { mutate, isPending } = useLogout()
   const { username, avatarUrl } = data
 
+  const [open, setOpen] = useState(false)
+
   const fallbackName = username.slice(0, 1).toUpperCase()
 
   if (!data) {
@@ -32,7 +35,7 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
   }
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className={className}>
         <Avatar>
           {avatarUrl && <AvatarImage src={avatarUrl} />}
@@ -49,6 +52,7 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
             asChild
             variant={'ghost'}
             className="justify-start text-start"
+            onClick={() => setOpen(false)}
           >
             <Link href={routes.profile.createPrompt}>Создать промпт</Link>
           </Button>
@@ -57,6 +61,7 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
             asChild
             variant={'ghost'}
             className="justify-start text-start"
+            onClick={() => setOpen(false)}
           >
             <Link href={routes.profile.myPrompts}>Мои промпты</Link>
           </Button>

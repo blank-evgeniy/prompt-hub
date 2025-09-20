@@ -4,12 +4,11 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { routes } from '@/app/routes'
+import { routes } from '@/shared/routes'
 import { translateBackendError } from '@/shared/api/errors'
 
 import { LoginForm } from './login-form'
-import { loginSchema, LoginSchema } from '../model/login-schema'
-import { mapLoginSchemaToLoginDto } from '../utils/mappers'
+import { loginSchema, LoginSchema, mapLoginSchemaToLoginDto } from '../model'
 import { useLogin } from '../api'
 
 export const LoginPage = () => {

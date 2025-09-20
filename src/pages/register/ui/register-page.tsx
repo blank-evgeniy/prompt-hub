@@ -4,11 +4,14 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { routes } from '@/app/routes'
+import { routes } from '@/shared/routes'
 import { translateBackendError } from '@/shared/api/errors'
 
-import { registerSchema, RegisterSchema } from '../model/register-schema'
-import { mapRegisterSchemaToRegisterDto } from '../utils/mappers'
+import {
+  registerSchema,
+  RegisterSchema,
+  mapRegisterSchemaToRegisterDto,
+} from '../model'
 import { RegisterForm } from './register-form'
 import { useRegister } from '../api'
 

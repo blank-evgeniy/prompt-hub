@@ -1,8 +1,10 @@
-import { routes } from '@/app/routes'
-import { Button } from '@/shared/ui/button'
-import { Container } from '@/shared/ui/container'
 import { ScrollTextIcon } from 'lucide-react'
 import Link from 'next/link'
+
+import { routes } from '@/shared/routes'
+import { Button } from '@/shared/ui/button'
+import { Container } from '@/shared/ui/container'
+
 import { HeaderActions } from './header-actions'
 
 export const Header = () => {

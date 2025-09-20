@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { routes } from '@/app/routes'
+import { routes } from '@/shared/routes'
 
 import { Typography } from '@/shared/ui/typography'
 

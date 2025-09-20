@@ -12,9 +12,12 @@ import { ButtonLoader } from '@/shared/ui/loaders'
 import { promptCategoryOptions } from '@/shared/consts'
 
 import { useCreatePrompt } from '../../api'
-import { createPromptSchema, CreatePromptSchema } from '../../model/schema'
-import { defaultCreatePromptValues } from '../../model/consts'
-import { mapCreatePromptSchemaToCreatePromptDto } from '../../utils/mappers'
+import {
+  createPromptSchema,
+  CreatePromptSchema,
+  defaultCreatePromptValues,
+  mapCreatePromptSchemaToCreatePromptDto,
+} from '../../model'
 
 interface CreatePromptFormProps {
   onSuccess: () => void

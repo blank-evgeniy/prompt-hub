@@ -1,12 +1,13 @@
 'use client'
 
+import { useQuery } from '@tanstack/react-query'
+
 import { Loader } from '@/shared/ui/loaders'
+import { profileQueries } from '@/shared/api/services'
 
 import { AuthLinks } from './auth-links'
 import { ProfileCard } from './profile-card'
-import { mapUserDtoToProfileCard } from '../utils/map-profile-to-ui'
-import { useQuery } from '@tanstack/react-query'
-import { profileQueries } from '@/shared/api/services'
+import { mapUserDtoToProfileCard } from '../model'
 
 interface HeaderActionsProps {
   className?: string

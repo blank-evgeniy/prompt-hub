@@ -1,5 +1,5 @@
 import { CreatePromptDto, PromptCategory } from '@/shared/api/types'
-import { CreatePromptSchema } from '../model/schema'
+import { CreatePromptSchema } from './schema'
 
 export const mapCreatePromptSchemaToCreatePromptDto = (
   values: CreatePromptSchema

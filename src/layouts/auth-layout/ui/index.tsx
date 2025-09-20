@@ -1,4 +1,4 @@
-import { routes } from '@/app/routes'
+import { routes } from '@/shared/routes'
 import { Button } from '@/shared/ui/button'
 import { Container } from '@/shared/ui/container'
 import { ScrollTextIcon } from 'lucide-react'

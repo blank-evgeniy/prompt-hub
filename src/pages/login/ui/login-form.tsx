@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 
-import { routes } from '@/app/routes'
+import { routes } from '@/shared/routes'
 import { AppLink } from '@/shared/ui/app-link'
 import { Button } from '@/shared/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
@@ -10,7 +10,7 @@ import { Input } from '@/shared/ui/input'
 import { ButtonLoader } from '@/shared/ui/loaders'
 import { FieldMessage } from '@/shared/ui/field-message'
 
-import { LoginSchema } from '../model/login-schema'
+import { LoginSchema } from '../model'
 
 interface LoginFormProps {
   form: ReturnType<typeof useForm<LoginSchema>>

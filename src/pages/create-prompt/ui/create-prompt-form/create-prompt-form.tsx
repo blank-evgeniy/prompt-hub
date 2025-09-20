@@ -56,6 +56,7 @@ export const CreatePromptForm = ({ onSuccess }: CreatePromptFormProps) => {
             placeholder="Выберите категорию промпта"
             options={promptCategoryOptions}
             message={fieldState.error?.message}
+            isSearchable={false}
             {...field}
           />
         )}

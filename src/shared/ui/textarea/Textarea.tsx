@@ -1,4 +1,9 @@
+'use client'
+
+import { useState } from 'react'
+
 import { cn } from '@/shared/utils/cn'
+
 import { Label } from '../label'
 import { FieldMessage } from '../field-message'
 import { Typography } from '../typography'
@@ -11,14 +16,34 @@ type TextareaProps = React.ComponentProps<'textarea'> & {
 export const Textarea = ({
   className,
   ref,
-  value,
   label,
   message,
   id,
   disabled,
   maxLength,
+  defaultValue,
+  onChange,
   ...props
 }: TextareaProps) => {
+  const [charCount, setCharCount] = useState(
+    typeof defaultValue === 'string' ? defaultValue.length : 0
+  )
+
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCharCount(event.target.value.length)
+    onChange?.(event)
+  }
+
+  const updateHeight = (el: HTMLTextAreaElement) => {
+    el.style.height = 'auto'
+    el.style.height = `${el.scrollHeight}px`
+  }
+
+  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    updateHeight(e.target)
+    handleChange(e)
+  }
+
   return (
     <div className="flex flex-col">
       {label && (
@@ -31,18 +56,19 @@ export const Textarea = ({
         disabled={disabled}
         id={id}
         maxLength={maxLength}
-        value={value}
         className={cn(
-          'placeholder:text-on-surface-var selection:bg-primary-container selection:text-on-primary-container border-outline flex w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+          'placeholder:text-on-surface-var selection:bg-primary-container selection:text-on-primary-container border-outline flex w-full min-w-0 overflow-hidden rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
           'focus-visible:border-primary',
           'aria-invalid:border-error aria-invalid:text-error',
           className
         )}
+        onInput={handleInput}
+        onChange={handleChange}
         {...props}
       />
       {maxLength && (
         <Typography variant="label" className="mt-1">
-          {typeof value === 'string' ? value.length : 0} / {maxLength}
+          {charCount} / {maxLength}
         </Typography>
       )}
       {message && <FieldMessage className="mt-1">{message}</FieldMessage>}

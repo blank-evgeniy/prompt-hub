@@ -1,9 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { authApi } from '@/shared/api/services'
+import { authApi, profileQueries } from '@/shared/api/services'
 import { clearAccessToken } from '@/shared/api/tokens/auth-tokens'
-
-import { queryKeyService } from './query-key-service'
 
 export const useLogout = () => {
   const queryClient = useQueryClient()
@@ -12,7 +10,7 @@ export const useLogout = () => {
     mutationFn: () => authApi.logout(),
     onSuccess: () => {
       clearAccessToken()
-      queryClient.setQueryData(queryKeyService.getProfile(), null)
+      queryClient.setQueryData(profileQueries.meKey(), null)
     },
   })
 }

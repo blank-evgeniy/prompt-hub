@@ -1,6 +1,5 @@
 'use client'
 
-import { useLogout } from '@/shared/hooks/queries'
 import { Button } from '@/shared/ui/button'
 import { ProfileCardData } from '../types'
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar'
@@ -16,6 +15,8 @@ import Link from 'next/link'
 import { routes } from '@/app/routes'
 import { LogOutIcon } from 'lucide-react'
 import { useState } from 'react'
+
+import { useLogout } from '../api'
 
 interface ProfileCardProps {
   data: ProfileCardData

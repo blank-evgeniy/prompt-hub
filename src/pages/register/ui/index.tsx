@@ -6,11 +6,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { routes } from '@/app/routes'
 import { translateBackendError } from '@/shared/api/errors'
-import { useRegister } from '@/shared/hooks/queries'
 
 import { registerSchema, RegisterSchema } from '../model/register-schema'
 import { mapRegisterSchemaToRegisterDto } from '../utils/mappers'
 import { RegisterForm } from './register-form'
+import { useRegister } from '../api'
 
 export const RegisterPage = () => {
   const router = useRouter()

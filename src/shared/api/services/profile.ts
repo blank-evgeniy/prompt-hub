@@ -1,5 +1,18 @@
+import { queryOptions } from '@tanstack/react-query'
 import axiosInstance from '../axios-instance'
 import { UserResponseDto } from '../types'
+
+export const profileQueries = {
+  baseKey: 'profile',
+
+  meKey: () => [profileQueries.baseKey, 'me'],
+  me: () =>
+    queryOptions({
+      queryKey: profileQueries.meKey(),
+      queryFn: () => profileApi.me(),
+      retry: 1,
+    }),
+}
 
 export const profileApi = {
   me: async () =>

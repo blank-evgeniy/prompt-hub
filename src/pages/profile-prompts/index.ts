@@ -1,0 +1,1 @@
+export { ProfilePromptsPage } from './ui'

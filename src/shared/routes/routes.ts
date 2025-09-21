@@ -13,5 +13,6 @@ export const routes = {
   profile: {
     myPrompts: '/prompts',
     createPrompt: '/prompts/create',
+    editPrompt: (id: string) => `/prompts/${id}/edit`,
   },
 }

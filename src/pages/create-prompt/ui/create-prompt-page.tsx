@@ -12,7 +12,7 @@ export const CreatePromptPage = () => {
   const router = useRouter()
 
   const handleCreatePrompt = () => {
-    router.push(routes.public.home)
+    router.push(routes.profile.myPrompts)
   }
 
   return (

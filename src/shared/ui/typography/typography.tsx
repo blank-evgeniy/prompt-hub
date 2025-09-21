@@ -7,6 +7,7 @@ export const typographyVariants = cva('text-on-surface', {
       h1: 'text-2xl font-semibold',
       h2: 'text-xl font-medium',
       h3: 'text-lg font-medium',
+      'card-title': 'text-lg font-semibold',
       paragraph: 'text-base',
       description: 'text-sm text-on-surface-var',
       label: 'text-xs',

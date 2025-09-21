@@ -1,3 +1,4 @@
+import { queryOptions } from '@tanstack/react-query'
 import axiosInstance from '../axios-instance'
 import {
   CreatePromptDto,
@@ -7,7 +8,7 @@ import {
   UpdatePromptDto,
 } from '../types'
 
-export const promptsApi = {
+export const promptApi = {
   list: async (params?: {
     limit?: number
     page?: number
@@ -20,8 +21,11 @@ export const promptsApi = {
         params,
       })
     ).data,
+  profileList: async () =>
+    (await axiosInstance.get<PromptResponseDto[]>('/prompt/me')).data,
   get: async (id: string) =>
-    await axiosInstance.get<PromptResponseWithAuthorDto>(`/prompt/${id}`),
+    (await axiosInstance.get<PromptResponseWithAuthorDto>(`/prompt/${id}`))
+      .data,
   create: async (data: CreatePromptDto) =>
     (await axiosInstance.post<PromptResponseDto>('/prompt', data)).data,
   update: async (id: string, data: UpdatePromptDto) =>
@@ -34,4 +38,15 @@ export const promptsApi = {
     (await axiosInstance.post(`/prompts/${id}/dislike`)).data,
   removeReaction: async (id: string) =>
     (await axiosInstance.delete(`/prompts/${id}/like`)).data,
+}
+
+export const promptQueries = {
+  baseKey: () => ['prompts'],
+
+  profileListKey: () => [...promptQueries.baseKey(), 'list'],
+  profileList: () =>
+    queryOptions({
+      queryKey: promptQueries.profileListKey(),
+      queryFn: promptApi.profileList,
+    }),
 }

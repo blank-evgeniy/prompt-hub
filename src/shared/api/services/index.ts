@@ -1,4 +1,4 @@
 export { authApi } from './auth'
 export { profileApi, profileQueries } from './profile'
-export { promptsApi } from './prompts'
+export { promptApi } from './prompt'
 export { usersApi } from './users'

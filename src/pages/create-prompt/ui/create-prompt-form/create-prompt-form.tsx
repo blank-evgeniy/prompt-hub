@@ -65,7 +65,7 @@ export const CreatePromptForm = ({ onSuccess }: CreatePromptFormProps) => {
       <Textarea
         label="Промпт"
         placeholder="Введите текст промпта"
-        maxLength={500}
+        maxLength={1000}
         message={formState.errors.prompt?.message}
         {...register('prompt')}
       />

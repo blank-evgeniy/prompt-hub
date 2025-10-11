@@ -20,7 +20,6 @@ export const RegisterPage = () => {
 
   const form = useForm<RegisterSchema>({
     defaultValues: {
-      email: '',
       password: '',
       username: '',
     },
@@ -31,7 +30,7 @@ export const RegisterPage = () => {
 
   const onSubmit = (values: RegisterSchema) => {
     mutate(mapRegisterSchemaToRegisterDto(values), {
-      onSuccess: () => router.push(routes.auth.login),
+      onSuccess: () => router.push(routes.public.home),
       onError: (error) =>
         form.setError('root', { message: translateBackendError(error) }),
     })

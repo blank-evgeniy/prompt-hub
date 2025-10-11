@@ -39,14 +39,13 @@ export const RegisterForm = ({
         <CardContent>
           <div className="flex flex-col gap-4">
             <Input
-              type="email"
-              id="email"
-              label="Почта"
-              aria-invalid={errors.email ? 'true' : 'false'}
-              message={errors.email?.message}
-              autoComplete="email"
-              placeholder="Введите email"
-              {...register('email')}
+              id="username"
+              label="Имя пользователя"
+              placeholder="Введите имя пользователя"
+              aria-invalid={errors.username ? 'true' : 'false'}
+              message={errors.username?.message}
+              autoComplete="username"
+              {...register('username')}
             />
             <Input
               type="password"
@@ -57,15 +56,6 @@ export const RegisterForm = ({
               message={errors.password?.message}
               autoComplete="new-password"
               {...register('password')}
-            />
-            <Input
-              id="username"
-              label="Имя пользователя"
-              placeholder="Введите имя пользователя"
-              aria-invalid={errors.username ? 'true' : 'false'}
-              message={errors.username?.message}
-              autoComplete="username"
-              {...register('username')}
             />
 
             {errors.root?.message && (

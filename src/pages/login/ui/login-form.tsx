@@ -35,13 +35,12 @@ export const LoginForm = ({ form, isLoading, onValid }: LoginFormProps) => {
         <CardContent>
           <div className="flex flex-col gap-4">
             <Input
-              type="email"
-              id="email"
-              label="Почта"
-              aria-invalid={errors.email ? 'true' : 'false'}
-              message={errors.email?.message}
-              placeholder="Введите email"
-              {...register('email')}
+              id="username"
+              label="Имя пользователя"
+              aria-invalid={errors.username ? 'true' : 'false'}
+              message={errors.username?.message}
+              placeholder="Введите имя пользователя"
+              {...register('username')}
             />
             <Input
               type="password"

@@ -1,7 +1,6 @@
 import z from 'zod'
 
 export const registerSchema = z.object({
-  email: z.email({ message: 'Некорректная почта' }),
   password: z
     .string()
     .min(6, { message: 'Поле должно содержать не менее 6 символов' })

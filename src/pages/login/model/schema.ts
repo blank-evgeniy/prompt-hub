@@ -1,8 +1,8 @@
 import z from 'zod'
 
 export const loginSchema = z.object({
-  password: z.string(),
-  email: z.email({ message: 'Некорректная почта' }),
+  password: z.string({ message: 'Введите пароль' }),
+  username: z.string({ message: 'Введите логин' }),
 })
 
 export type LoginSchema = z.infer<typeof loginSchema>

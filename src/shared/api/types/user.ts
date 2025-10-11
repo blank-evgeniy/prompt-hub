@@ -1,6 +1,5 @@
 export interface UserResponseDto {
   id: string
-  email: string
   username: string
   bio?: string | null
   avatarUrl?: string | null

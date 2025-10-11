@@ -2,6 +2,6 @@ import { LoginDto } from '@/shared/api/types'
 import { LoginSchema } from './schema'
 
 export const mapLoginSchemaToLoginDto = (values: LoginSchema): LoginDto => ({
-  email: values.email.trim(),
+  username: values.username.trim(),
   password: values.password.trim(),
 })

@@ -16,7 +16,7 @@ export const LoginPage = () => {
 
   const form = useForm<LoginSchema>({
     defaultValues: {
-      email: '',
+      username: '',
       password: '',
     },
     resolver: zodResolver(loginSchema),

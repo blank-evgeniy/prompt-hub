@@ -2,7 +2,7 @@
 export const errorTranslationMap: Record<string, string> = {
   'Username is already in use': 'Пользователь с таким именем уже существует',
   'Email is already in use': 'Этот email уже используется',
-  'Invalid login or password': 'Неверный email или пароль',
+  'Invalid login or password': 'Неверное имя пользователя или пароль',
   'Network Error': 'Ошибка сети',
   'Request failed with status code 400': 'Неверные данные',
   'Request failed with status code 401': 'Не авторизован',

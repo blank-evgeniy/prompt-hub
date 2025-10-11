@@ -1,5 +1,11 @@
 import axios from 'axios'
-import { clearAccessToken, getAccessToken } from '../tokens/auth-tokens'
+
+import {
+  clearAccessToken,
+  getAccessToken,
+  saveAccessToken,
+} from '../tokens/auth-tokens'
+import { authApi } from '../services'
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -22,11 +28,31 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      clearAccessToken()
-      window.location.href = '/login'
+  async (error) => {
+    const originalRequest = error.config
+
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+
+      const currentToken = getAccessToken()
+
+      if (!currentToken) {
+        return Promise.reject(error)
+      }
+
+      try {
+        const newAccessToken = (await authApi.refresh()).data.accessToken
+        saveAccessToken(newAccessToken)
+
+        originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
+
+        return axiosInstance(originalRequest)
+      } catch (tokenError) {
+        clearAccessToken()
+        return Promise.reject(tokenError)
+      }
     }
+
     return Promise.reject(error)
   }
 )

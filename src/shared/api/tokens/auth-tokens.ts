@@ -7,7 +7,7 @@ export const getAccessToken = () => {
 }
 
 export const saveAccessToken = (authToken: string) => {
-  Cookies.set(ACCESS_TOKEN_KEY, authToken, { expires: 7 })
+  Cookies.set(ACCESS_TOKEN_KEY, authToken, { expires: 30 })
 }
 
 export const clearAccessToken = () => {

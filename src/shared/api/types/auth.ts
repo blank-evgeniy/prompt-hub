@@ -12,3 +12,7 @@ export interface RegisterDto {
 export interface LoginResponseDto {
   accessToken: string
 }
+
+export interface RefreshTokenResponseDto {
+  accessToken: string
+}

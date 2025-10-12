@@ -1,15 +1,15 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 
-import { routes } from '@/shared/routes'
 import { translateBackendError } from '@/shared/api/errors'
+import { routes } from '@/shared/routes'
 
-import { LoginForm } from './login-form'
-import { loginSchema, LoginSchema, mapLoginSchemaToLoginDto } from '../model'
 import { useLogin } from '../api'
+import { LoginSchema, loginSchema, mapLoginSchemaToLoginDto } from '../model'
+import { LoginForm } from './login-form'
 
 export const LoginPage = () => {
   const router = useRouter()

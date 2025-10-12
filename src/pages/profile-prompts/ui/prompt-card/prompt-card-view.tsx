@@ -1,15 +1,15 @@
 'use client'
 
-import * as React from 'react'
 import { EditIcon, TrashIcon } from 'lucide-react'
+import * as React from 'react'
 
-import { Typography } from '@/shared/ui/typography'
-import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
-import { Button } from '@/shared/ui/button'
+import { useBreakpoint } from '@/shared/hooks'
 import { Badge } from '@/shared/ui/badge/badge'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
 import { CopyButton } from '@/shared/ui/copy-button'
 import { ExpandableText } from '@/shared/ui/expandable-text'
-import { useBreakpoint } from '@/shared/hooks'
+import { Typography } from '@/shared/ui/typography'
 
 import { ProfilePrompt } from '../../model'
 

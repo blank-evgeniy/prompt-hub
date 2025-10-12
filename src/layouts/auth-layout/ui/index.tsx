@@ -1,8 +1,10 @@
+import { ScrollTextIcon } from 'lucide-react'
+import Link from 'next/link'
+
 import { routes } from '@/shared/routes'
 import { Button } from '@/shared/ui/button'
 import { Container } from '@/shared/ui/container'
-import { ScrollTextIcon } from 'lucide-react'
-import Link from 'next/link'
+
 import { RaysBackground } from './rays-background'
 
 interface AuthLayoutProps {

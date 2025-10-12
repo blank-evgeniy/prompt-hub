@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation'
 
 import { routes } from '@/shared/routes'
-
 import { Typography } from '@/shared/ui/typography'
 
 import { CreatePromptForm } from './create-prompt-form'

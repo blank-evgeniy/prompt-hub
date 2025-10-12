@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/shared/utils/cn'
 
-import { Label } from '../label'
 import { FieldMessage } from '../field-message'
+import { Label } from '../label'
 import { Typography } from '../typography'
 
 type TextareaProps = React.ComponentProps<'textarea'> & {
@@ -37,7 +37,6 @@ export const Textarea = ({
     } else if (ref) {
       ref.current = localRef.current
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

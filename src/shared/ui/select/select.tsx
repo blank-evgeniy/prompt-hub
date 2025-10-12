@@ -1,10 +1,12 @@
 'use client'
 
-import BaseSelect, { Props as BaseSelectProps } from 'react-select'
-import { Label } from '../label'
-import { FieldMessage } from '../field-message'
 import { useId } from 'react'
+import BaseSelect, { Props as BaseSelectProps } from 'react-select'
+
 import { cn } from '@/shared/utils/cn'
+
+import { FieldMessage } from '../field-message'
+import { Label } from '../label'
 
 interface GroupBase<Option> {
   readonly options: readonly Option[]

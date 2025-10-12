@@ -1,5 +1,6 @@
-import { cn } from '@/shared/utils/cn'
 import Link from 'next/link'
+
+import { cn } from '@/shared/utils/cn'
 
 type AppLinkProps = React.ComponentProps<typeof Link>
 

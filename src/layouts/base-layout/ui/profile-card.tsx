@@ -1,24 +1,24 @@
 'use client'
 
+import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { LogOutIcon } from 'lucide-react'
 
-import { Button } from '@/shared/ui/button'
+import { routes } from '@/shared/routes'
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar'
+import { Button } from '@/shared/ui/button'
 import {
   Sheet,
-  SheetTrigger,
   SheetContent,
+  SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetFooter,
-  SheetDescription,
+  SheetTrigger,
 } from '@/shared/ui/sheet'
-import { routes } from '@/shared/routes'
 
-import { ProfileCardData } from '../model'
 import { useLogout } from '../api'
+import { ProfileCardData } from '../model'
 
 interface ProfileCardProps {
   data: ProfileCardData

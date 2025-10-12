@@ -1,2 +1,2 @@
-export * from './schema'
 export { mapRegisterSchemaToRegisterDto } from './map'
+export * from './schema'

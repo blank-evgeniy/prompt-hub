@@ -1,9 +1,9 @@
 'use client'
 
-import * as React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
-
 import { XIcon } from 'lucide-react'
+import * as React from 'react'
+
 import { cn } from '@/shared/utils/cn'
 
 function Modal({
@@ -136,11 +136,11 @@ function ModalDescription({
 
 export {
   Modal,
-  ModalTrigger,
   ModalClose,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalTitle,
   ModalDescription,
+  ModalFooter,
+  ModalHeader,
+  ModalTitle,
+  ModalTrigger,
 }

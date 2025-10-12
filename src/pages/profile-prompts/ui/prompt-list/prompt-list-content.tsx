@@ -9,8 +9,8 @@ import {
   mapProfilePromptsResponse,
   useProfilePromptsContext,
 } from '../../model'
-import { PromptCard } from '../prompt-card'
 import { EditPromptModal } from '../edit-prompt-modal'
+import { PromptCard } from '../prompt-card'
 
 export const PromptListContent = () => {
   const { isEditModalOpen, editingPrompt, closeEditModal } =

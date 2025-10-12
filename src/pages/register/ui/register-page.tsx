@@ -1,19 +1,19 @@
 'use client'
 
-import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
 
-import { routes } from '@/shared/routes'
 import { translateBackendError } from '@/shared/api/errors'
+import { routes } from '@/shared/routes'
 
+import { useRegister } from '../api'
 import {
-  registerSchema,
-  RegisterSchema,
   mapRegisterSchemaToRegisterDto,
+  RegisterSchema,
+  registerSchema,
 } from '../model'
 import { RegisterForm } from './register-form'
-import { useRegister } from '../api'
 
 export const RegisterPage = () => {
   const router = useRouter()

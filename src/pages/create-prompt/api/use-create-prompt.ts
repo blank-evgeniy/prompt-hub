@@ -1,7 +1,8 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+
 import { promptApi } from '@/shared/api/services'
 import { promptQueries } from '@/shared/api/services/prompt'
 import { CreatePromptDto, PromptResponseDto } from '@/shared/api/types'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export const useCreatePrompt = () => {
   const queryClient = useQueryClient()

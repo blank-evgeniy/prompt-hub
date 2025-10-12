@@ -1,31 +1,31 @@
 'use client'
 
-import * as React from 'react'
-import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { EditIcon } from 'lucide-react'
+import * as React from 'react'
+import { Controller, useForm } from 'react-hook-form'
 
-import { Input } from '@/shared/ui/input'
-import { Select } from '@/shared/ui/select'
-import { Textarea } from '@/shared/ui/textarea'
+import { PromptCategory } from '@/shared/api/types'
+import { promptCategoryOptions } from '@/shared/consts'
 import { Button } from '@/shared/ui/button'
+import { Input } from '@/shared/ui/input'
 import {
   Modal,
   ModalContent,
-  ModalHeader,
-  ModalTitle,
   ModalDescription,
   ModalFooter,
+  ModalHeader,
+  ModalTitle,
 } from '@/shared/ui/modal'
-import { promptCategoryOptions } from '@/shared/consts'
-import { PromptCategory } from '@/shared/api/types'
+import { Select } from '@/shared/ui/select'
+import { Textarea } from '@/shared/ui/textarea'
 
-import { ProfilePrompt } from '../../model'
 import {
-  createPromptSchema,
   CreatePromptSchema,
+  createPromptSchema,
 } from '../../../create-prompt/model'
 import { useEditPrompt } from '../../api'
+import { ProfilePrompt } from '../../model'
 
 interface EditPromptModalProps {
   prompt: ProfilePrompt

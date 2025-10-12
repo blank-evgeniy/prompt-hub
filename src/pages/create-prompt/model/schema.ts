@@ -1,5 +1,6 @@
-import { requiredOption } from '@/shared/validation'
 import z from 'zod'
+
+import { requiredOption } from '@/shared/validation'
 
 export const createPromptSchema = z.object({
   prompt: z.string().min(3, { message: 'Введите текст промпта' }),

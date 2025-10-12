@@ -1,4 +1,5 @@
 import { Container } from '@/shared/ui/container'
+
 import { Header } from './header'
 
 interface BaseLayoutProps {

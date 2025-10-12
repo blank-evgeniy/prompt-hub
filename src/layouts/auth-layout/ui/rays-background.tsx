@@ -1,9 +1,10 @@
 'use client'
 
-import { useBreakpoint } from '@/shared/hooks'
-import { LightRays } from '@/shared/ui/light-rays'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+
+import { useBreakpoint } from '@/shared/hooks'
+import { LightRays } from '@/shared/ui/light-rays'
 
 const rayColors = [
   'var(--color-accent)',

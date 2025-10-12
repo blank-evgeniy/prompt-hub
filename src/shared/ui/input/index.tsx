@@ -1,6 +1,7 @@
 import { cn } from '@/shared/utils/cn'
-import { Label } from '../label'
+
 import { FieldMessage } from '../field-message'
+import { Label } from '../label'
 
 type InputProps = React.ComponentProps<'input'> & {
   label?: string

@@ -1,20 +1,20 @@
 'use client'
 
-import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { PlusIcon } from 'lucide-react'
+import { Controller, useForm } from 'react-hook-form'
 
+import { promptCategoryOptions } from '@/shared/consts'
+import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
+import { ButtonLoader } from '@/shared/ui/loaders'
 import { Select } from '@/shared/ui/select'
 import { Textarea } from '@/shared/ui/textarea'
-import { Button } from '@/shared/ui/button'
-import { ButtonLoader } from '@/shared/ui/loaders'
-import { promptCategoryOptions } from '@/shared/consts'
 
 import { useCreatePrompt } from '../../api'
 import {
-  createPromptSchema,
   CreatePromptSchema,
+  createPromptSchema,
   defaultCreatePromptValues,
   mapCreatePromptSchemaToCreatePromptDto,
 } from '../../model'

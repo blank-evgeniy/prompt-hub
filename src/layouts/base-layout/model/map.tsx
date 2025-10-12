@@ -1,4 +1,5 @@
 import { UserResponseDto } from '@/shared/api/types'
+
 import { ProfileCardData } from './types'
 
 export const mapUserDtoToProfileCard = (

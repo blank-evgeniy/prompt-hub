@@ -1,4 +1,5 @@
 import { RegisterDto } from '@/shared/api/types'
+
 import { RegisterSchema } from './schema'
 
 export const mapRegisterSchemaToRegisterDto = (

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+
 import { Typography } from '../typography'
 
 export type ExpandableTextProps = {

@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 
-import { ProfilePrompt, useProfilePromptsContext } from '../../model'
 import { useDeletePrompt } from '../../api'
+import { ProfilePrompt, useProfilePromptsContext } from '../../model'
 import { PromptCardView } from './prompt-card-view'
 
 interface PromptCardProps {

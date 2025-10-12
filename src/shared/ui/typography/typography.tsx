@@ -1,5 +1,6 @@
-import { cn } from '@/shared/utils/cn'
 import { cva, VariantProps } from 'class-variance-authority'
+
+import { cn } from '@/shared/utils/cn'
 
 export const typographyVariants = cva('text-base-content', {
   variants: {

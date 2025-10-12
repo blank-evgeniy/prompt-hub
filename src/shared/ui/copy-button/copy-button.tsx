@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import { Button } from '../button'
 import { CheckIcon, CopyIcon } from 'lucide-react'
+import { useEffect, useState } from 'react'
+
+import { Button } from '../button'
 
 type CopyButtonProps = Omit<
   React.ComponentProps<typeof Button>,

@@ -6,6 +6,7 @@ import { Button } from '@/shared/ui/button'
 import { Container } from '@/shared/ui/container'
 
 import { HeaderActions } from './header-actions'
+import { ThemeToggle } from './theme-toggle'
 
 export const Header = () => {
   return (
@@ -24,7 +25,10 @@ export const Header = () => {
           </Button>
         </div>
 
-        <HeaderActions className="ml-auto" />
+        <div className="ml-auto flex gap-4">
+          <ThemeToggle />
+          <HeaderActions />
+        </div>
       </Container>
     </header>
   )

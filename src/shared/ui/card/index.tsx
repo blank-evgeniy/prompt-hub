@@ -7,7 +7,7 @@ export const Card = ({ className, ...props }: CardProps) => {
     <div
       className={cn(
         'rounded-box flex flex-col gap-4 py-4 shadow-sm',
-        'bg-base-200 border-base-300 text-base-content border',
+        'bg-base-100 border-base-300 text-base-content border',
         className
       )}
       {...props}

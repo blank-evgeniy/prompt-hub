@@ -27,7 +27,7 @@ export const LoginForm = ({ form, isLoading, onValid }: LoginFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onValid)} className="w-full max-w-md">
-      <Card className="bg-base-100/70 relative">
+      <Card className="bg-base-200/70 relative">
         <CardHeader>
           <h1 className="text-center text-3xl font-semibold">Вход</h1>
         </CardHeader>

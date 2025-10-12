@@ -31,7 +31,7 @@ export const RegisterForm = ({
 
   return (
     <form onSubmit={handleSubmit(onValid)} className="w-full max-w-md">
-      <Card className="relative">
+      <Card className="bg-base-100/70 relative">
         <CardHeader>
           <h1 className="text-center text-3xl font-semibold">Регистрация</h1>
         </CardHeader>

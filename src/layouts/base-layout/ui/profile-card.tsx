@@ -13,6 +13,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetFooter,
+  SheetDescription,
 } from '@/shared/ui/sheet'
 import { routes } from '@/shared/routes'
 
@@ -79,6 +80,8 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
             Выйти
           </Button>
         </SheetFooter>
+
+        <SheetDescription className="sr-only">Меню профиля</SheetDescription>
       </SheetContent>
     </Sheet>
   )

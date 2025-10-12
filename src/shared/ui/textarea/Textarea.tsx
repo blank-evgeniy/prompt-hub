@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/shared/utils/cn'
 
@@ -29,6 +29,17 @@ export const Textarea = ({
     typeof defaultValue === 'string' ? defaultValue.length : 0
   )
 
+  const localRef = useRef<HTMLTextAreaElement>(null)
+
+  useEffect(() => {
+    if (typeof ref === 'function') {
+      ref(localRef.current)
+    } else if (ref) {
+      ref.current = localRef.current
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCharCount(event.target.value.length)
     onChange?.(event)
@@ -44,6 +55,12 @@ export const Textarea = ({
     handleChange(e)
   }
 
+  useEffect(() => {
+    if (localRef.current) {
+      updateHeight(localRef.current)
+    }
+  }, [])
+
   return (
     <div className="flex flex-col">
       {label && (
@@ -52,12 +69,12 @@ export const Textarea = ({
         </Label>
       )}
       <textarea
-        ref={ref}
+        ref={localRef}
         disabled={disabled}
         id={id}
         maxLength={maxLength}
         className={cn(
-          'placeholder:text-base-content/50 selection:bg-primary selection:text-primary-content border-base-content/50 rounded-field flex w-full min-w-0 overflow-hidden border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+          'placeholder:text-base-content/50 selection:bg-primary selection:text-primary-content border-base-content/50 rounded-field flex w-full min-w-0 resize-none overflow-hidden border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
           'focus-visible:border-primary',
           'aria-invalid:border-error aria-invalid:text-error',
           className

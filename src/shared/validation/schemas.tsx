@@ -6,4 +6,10 @@ export const optionSchema = z.object({
 })
 
 export const requiredOption = (message = 'Выберите значение') =>
-  optionSchema.nullable().refine((val) => val !== null, { message })
+  z.custom<z.infer<typeof optionSchema>>(
+    (val) => {
+      if (val == null) return false
+      return optionSchema.safeParse(val).success
+    },
+    { message }
+  )

@@ -1,1 +1,1 @@
-export * from './shemes'
+export * from './schemas'

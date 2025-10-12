@@ -6,5 +6,5 @@ export const mapCreatePromptSchemaToCreatePromptDto = (
 ): CreatePromptDto => ({
   title: values.title.trim(),
   content: values.prompt.trim(),
-  category: values.category?.value as PromptCategory,
+  category: values.category.value as PromptCategory,
 })

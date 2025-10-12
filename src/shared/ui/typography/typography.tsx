@@ -1,7 +1,7 @@
 import { cn } from '@/shared/utils/cn'
 import { cva, VariantProps } from 'class-variance-authority'
 
-export const typographyVariants = cva('text-on-surface', {
+export const typographyVariants = cva('text-base-content', {
   variants: {
     variant: {
       h1: 'text-2xl font-semibold',
@@ -9,7 +9,7 @@ export const typographyVariants = cva('text-on-surface', {
       h3: 'text-lg font-medium',
       'card-title': 'text-lg font-semibold',
       paragraph: 'text-base',
-      description: 'text-sm text-on-surface-var',
+      description: 'text-sm text-base-content/70',
       label: 'text-xs',
     },
   },

@@ -3,7 +3,7 @@ type BadgeProps = {
 }
 
 export const Badge = ({ children }: BadgeProps) => (
-  <span className="bg-primary-container text-on-primary-container rounded px-2 py-1 text-sm">
+  <span className="bg-primary text-primary-content rounded-selector px-2 py-1 text-sm">
     {children}
   </span>
 )

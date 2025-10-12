@@ -1,24 +1,18 @@
 import { cn } from '@/shared/utils/cn'
-import { cva, VariantProps } from 'class-variance-authority'
 
-const cardVariants = cva('flex flex-col gap-6 rounded-xl py-6 shadow-sm', {
-  variants: {
-    variant: {
-      default: 'bg-surface-bright text-on-surface',
-      primary: 'bg-primary text-on-primary',
-      secondary: 'bg-secondary text-on-secondary',
-      tertiary: 'bg-tertiary text-on-tertiary',
-    },
-  },
-  defaultVariants: {
-    variant: 'default',
-  },
-})
+type CardProps = React.ComponentProps<'div'>
 
-type CardProps = React.ComponentProps<'div'> & VariantProps<typeof cardVariants>
-
-export const Card = ({ className, variant, ...props }: CardProps) => {
-  return <div className={cn(cardVariants({ variant, className }))} {...props} />
+export const Card = ({ className, ...props }: CardProps) => {
+  return (
+    <div
+      className={cn(
+        'rounded-box flex flex-col gap-6 py-6 shadow-sm',
+        'bg-base-200 border-base-300 text-base-content border',
+        className
+      )}
+      {...props}
+    />
+  )
 }
 
 type CardHeaderProps = React.ComponentProps<'div'>

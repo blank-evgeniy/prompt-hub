@@ -39,7 +39,7 @@ export const ListState = <T,>({
   if (items.length === 0) {
     return (
       emptySlot ?? (
-        <Typography variant={'paragraph'} className="text-on-surface-var">
+        <Typography variant={'paragraph'} className="text-base-content/50">
           Ничего не найдено
         </Typography>
       )

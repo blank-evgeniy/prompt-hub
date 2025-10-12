@@ -3,17 +3,17 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 
 const buttonVariants = cva(
-  "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none",
+  "inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-field text-sm font-medium transition-all disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none",
   {
     variants: {
       variant: {
-        default: 'bg-primary text-on-primary hover:bg-primary/80',
-        destructive: 'bg-error text-on-error hover:bg-error/80',
+        default: 'bg-primary text-primary-content hover:bg-primary/80',
+        destructive: 'bg-error text-error-content hover:bg-error/80',
         outline:
-          'border bg-surface text-on-surface hover:bg-primary hover:text-on-primary',
-        secondary: 'bg-secondary text-on-secondary hover:bg-secondary/80',
-        tertiary: 'bg-tertiary text-on-tertiary hover:bg-tertiary/80',
-        ghost: 'hover:bg-surface-bright text-primary',
+          'border bg-transparent text-base-content hover:bg-primary hover:text-primary-content',
+        secondary: 'bg-secondary text-secondary-content hover:bg-secondary/80',
+        accent: 'bg-accent text-accent-content hover:bg-accent/80',
+        ghost: 'hover:bg-base-300 text-primary',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {

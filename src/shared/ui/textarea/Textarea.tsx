@@ -57,7 +57,7 @@ export const Textarea = ({
         id={id}
         maxLength={maxLength}
         className={cn(
-          'placeholder:text-on-surface-var selection:bg-primary-container selection:text-on-primary-container border-outline flex w-full min-w-0 overflow-hidden rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+          'placeholder:text-base-content/50 selection:bg-primary selection:text-primary-content border-base-content/50 rounded-field flex w-full min-w-0 overflow-hidden border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
           'focus-visible:border-primary',
           'aria-invalid:border-error aria-invalid:text-error',
           className

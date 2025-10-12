@@ -50,8 +50,8 @@ export const Select = <
         classNames={{
           control: ({ isFocused, isDisabled }) =>
             cn(
-              'flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none',
-              'placeholder:text-on-surface-var selection:bg-primary-container selection:text-on-primary-container border-outline',
+              'rounded-field flex h-9 w-full min-w-0 border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none',
+              'placeholder:text-base-content/50 selection:bg-primary selection:text-primary-content border-base-content/50',
               isFocused && 'border-primary',
               isDisabled && 'pointer-events-none cursor-not-allowed opacity-50',
               props['aria-invalid'] && 'border-error text-error'
@@ -59,15 +59,15 @@ export const Select = <
           valueContainer: () => 'p-0 m-0',
           indicatorsContainer: () => 'gap-1',
           input: () => 'text-base',
-          singleValue: () => 'text-base',
-          placeholder: () => 'text-on-surface-var',
+          singleValue: () => 'text-base-content',
+          placeholder: () => 'text-base-content/50',
           menu: () =>
-            'mt-1 rounded-md border border-outline bg-surface shadow-md overflow-hidden',
+            'mt-1 rounded-field border border-base-content/50 bg-base-100 shadow-md overflow-hidden',
           option: ({ isFocused, isSelected }) =>
             cn(
               'cursor-pointer px-3 py-2 text-base',
-              isFocused && 'bg-primary-container text-on-primary-container',
-              isSelected && 'bg-primary text-on-primary'
+              isFocused && 'bg-primary/50 text-primary-content',
+              isSelected && 'bg-primary text-primary-content'
             ),
         }}
         {...props}

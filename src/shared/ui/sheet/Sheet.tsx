@@ -46,7 +46,7 @@ function SheetOverlay({
   return (
     <SheetPrimitive.Overlay
       className={cn(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50',
+        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 bg-overlay fixed inset-0 z-50',
         className
       )}
       {...props}
@@ -67,7 +67,7 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Content
         className={cn(
-          'bg-surface border-outline data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
+          'bg-base-100 border-base-content/50 data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500',
           side === 'right' &&
             'data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
           side === 'left' &&
@@ -111,7 +111,7 @@ function SheetTitle({
 }: React.ComponentProps<typeof SheetPrimitive.Title>) {
   return (
     <SheetPrimitive.Title
-      className={cn('text-on-surface font-semibold', className)}
+      className={cn('text-base-content font-semibold', className)}
       {...props}
     />
   )
@@ -123,7 +123,7 @@ function SheetDescription({
 }: React.ComponentProps<typeof SheetPrimitive.Description>) {
   return (
     <SheetPrimitive.Description
-      className={cn('text-on-surface-var text-sm', className)}
+      className={cn('text-base-content/50 text-sm', className)}
       {...props}
     />
   )

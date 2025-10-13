@@ -17,8 +17,8 @@ import {
   SheetTrigger,
 } from '@/shared/ui/sheet'
 
-import { useLogout } from '../api'
-import { ProfileCardData } from '../model'
+import { useLogout } from '../../../api'
+import { ProfileCardData } from '../../../model'
 
 interface ProfileCardProps {
   data: ProfileCardData

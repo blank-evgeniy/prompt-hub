@@ -1,12 +1,12 @@
 import { ScrollTextIcon } from 'lucide-react'
 import Link from 'next/link'
 
+import { ThemeToggle } from '@/features/theme-toggle'
 import { routes } from '@/shared/routes'
 import { Button } from '@/shared/ui/button'
 import { Container } from '@/shared/ui/container'
 
 import { HeaderActions } from './header-actions'
-import { ThemeToggle } from './theme-toggle'
 
 export const Header = () => {
   return (

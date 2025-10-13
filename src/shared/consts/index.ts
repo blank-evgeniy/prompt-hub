@@ -1,1 +1,1 @@
-export { promptCategoryOptions } from './options'
+export { promptCategoryOptions } from './select-options'

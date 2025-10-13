@@ -10,7 +10,7 @@ import { FieldMessage } from '@/shared/ui/field-message'
 import { Input } from '@/shared/ui/input'
 import { ButtonLoader } from '@/shared/ui/loaders'
 
-import { LoginSchema } from '../model'
+import { LoginSchema } from '../../model'
 
 interface LoginFormProps {
   form: ReturnType<typeof useForm<LoginSchema>>

@@ -1,7 +1,7 @@
 import { Loader } from '../loaders'
 import { Typography } from '../typography'
 
-type ListStateProps<T> = {
+export type ListStateProps<T> = {
   items: T[]
   isLoading?: boolean
   isError?: boolean

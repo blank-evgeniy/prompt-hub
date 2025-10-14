@@ -19,6 +19,8 @@ const meta = {
   },
   args: {
     onClick: fn(),
+    isLoading: false,
+    disabled: false,
   },
 } satisfies Meta<typeof Button>
 

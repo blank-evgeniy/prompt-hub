@@ -8,7 +8,6 @@ import { Button } from '@/shared/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
 import { FieldMessage } from '@/shared/ui/field-message'
 import { Input } from '@/shared/ui/input'
-import { ButtonLoader } from '@/shared/ui/loaders'
 
 import { LoginSchema } from '../../model'
 
@@ -65,8 +64,8 @@ export const LoginForm = ({ form, isLoading, onValid }: LoginFormProps) => {
         </CardContent>
 
         <CardFooter>
-          <Button className="w-full" disabled={isLoading}>
-            Войти {isLoading && <ButtonLoader />}
+          <Button className="w-full" isLoading={isLoading}>
+            Войти
           </Button>
         </CardFooter>
       </Card>

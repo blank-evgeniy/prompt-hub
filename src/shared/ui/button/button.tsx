@@ -1,10 +1,11 @@
-import { Slot } from '@radix-ui/react-slot'
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
+import { LoaderCircleIcon } from 'lucide-react'
 
 import { cn } from '@/shared/utils/cn'
 
 const buttonVariants = cva(
-  "inline-flex cursor-pointer overflow-hidden items-center justify-center gap-2 whitespace-nowrap rounded-field text-sm font-medium transition-all disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none",
+  "inline-flex cursor-pointer overflow-hidden items-center justify-center gap-2 whitespace-nowrap rounded-field text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none",
   {
     variants: {
       variant: {
@@ -53,13 +54,11 @@ export const Button = ({
   return (
     <Comp
       disabled={isLoading || disabled}
-      className={cn(buttonVariants({ variant, size, className }), {
-        'opacity-50': disabled,
-        'animate-pulse': isLoading,
-      })}
+      className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
-      {children}
+      <Slottable>{children}</Slottable>
+      {isLoading && <LoaderCircleIcon className="animate-spin" />}
     </Comp>
   )
 }

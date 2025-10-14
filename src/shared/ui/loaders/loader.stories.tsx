@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/nextjs'
 
-import { ButtonLoader } from './button-loader'
+import { Loader } from './loader'
 
 const meta = {
-  title: 'ui-kit/ButtonLoader',
-  component: ButtonLoader,
+  title: 'ui-kit/Loader',
+  component: Loader,
   argTypes: {},
   args: {},
-} satisfies Meta<typeof ButtonLoader>
+} satisfies Meta<typeof Loader>
 
 export default meta
 type Story = StoryObj<typeof meta>

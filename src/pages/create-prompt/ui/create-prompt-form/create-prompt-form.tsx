@@ -7,7 +7,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { promptCategoryOptions } from '@/shared/consts'
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
-import { ButtonLoader } from '@/shared/ui/loaders'
 import { Select } from '@/shared/ui/select'
 import { Textarea } from '@/shared/ui/textarea'
 
@@ -70,8 +69,8 @@ export const CreatePromptForm = ({ onSuccess }: CreatePromptFormProps) => {
         {...register('prompt')}
       />
 
-      <Button type="submit" className="self-end">
-        Создать {isPending ? <ButtonLoader /> : <PlusIcon />}
+      <Button type="submit" className="self-end" isLoading={isPending}>
+        Создать {!isPending && <PlusIcon />}
       </Button>
     </form>
   )

@@ -8,9 +8,8 @@ import { Button } from '@/shared/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
 import { FieldMessage } from '@/shared/ui/field-message'
 import { Input } from '@/shared/ui/input'
-import { ButtonLoader } from '@/shared/ui/loaders'
 
-import { RegisterSchema } from '../model'
+import { RegisterSchema } from '../../model'
 
 interface RegisterFormProps {
   form: ReturnType<typeof useForm<RegisterSchema>>
@@ -81,9 +80,8 @@ export const RegisterForm = ({
             </AppLink>
           </p>
 
-          <Button className="w-full" type="submit" disabled={isLoading}>
+          <Button className="w-full" type="submit" isLoading={isLoading}>
             Создать аккаунт
-            {isLoading && <ButtonLoader />}
           </Button>
         </CardFooter>
       </Card>

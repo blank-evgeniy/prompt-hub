@@ -1,8 +1,8 @@
 import z from 'zod'
 
-import { requiredOption } from '@/shared/validation'
+import { requiredOption } from './schemas'
 
-export const createPromptSchema = z.object({
+export const promptSchema = z.object({
   prompt: z.string().min(3, { message: 'Введите текст промпта' }),
   title: z
     .string()
@@ -15,4 +15,4 @@ export const createPromptSchema = z.object({
   category: requiredOption('Выберите категорию'),
 })
 
-export type CreatePromptSchema = z.infer<typeof createPromptSchema>
+export type PromptSchema = z.infer<typeof promptSchema>

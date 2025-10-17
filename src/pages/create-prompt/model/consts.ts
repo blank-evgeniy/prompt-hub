@@ -1,6 +1,6 @@
-import { CreatePromptSchema } from './schema'
+import { PromptSchema } from '@/shared/validation'
 
-export const defaultCreatePromptValues: CreatePromptSchema = {
+export const defaultCreatePromptValues: PromptSchema = {
   category: null!,
   prompt: '',
   title: '',

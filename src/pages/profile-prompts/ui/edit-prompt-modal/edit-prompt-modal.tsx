@@ -19,11 +19,8 @@ import {
 } from '@/shared/ui/modal'
 import { Select } from '@/shared/ui/select'
 import { Textarea } from '@/shared/ui/textarea'
+import { PromptSchema, promptSchema } from '@/shared/validation'
 
-import {
-  CreatePromptSchema,
-  createPromptSchema,
-} from '../../../create-prompt/model'
 import { useEditPrompt } from '../../api'
 import { ProfilePrompt } from '../../model'
 
@@ -43,7 +40,7 @@ export const EditPromptModal = ({
   const { mutate: editPrompt, isPending } = useEditPrompt(prompt.id)
 
   const { register, handleSubmit, formState, control, reset } =
-    useForm<CreatePromptSchema>({
+    useForm<PromptSchema>({
       defaultValues: {
         title: prompt?.title || '',
         category: promptCategoryOptions.find(
@@ -51,10 +48,10 @@ export const EditPromptModal = ({
         ),
         prompt: prompt.content || '',
       },
-      resolver: zodResolver(createPromptSchema),
+      resolver: zodResolver(promptSchema),
     })
 
-  const onSubmit = (data: CreatePromptSchema) => {
+  const onSubmit = (data: PromptSchema) => {
     editPrompt(
       {
         title: data.title,

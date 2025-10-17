@@ -1,9 +1,8 @@
 import { CreatePromptDto, PromptCategory } from '@/shared/api/types'
-
-import { CreatePromptSchema } from './schema'
+import { PromptSchema } from '@/shared/validation'
 
 export const mapCreatePromptSchemaToCreatePromptDto = (
-  values: CreatePromptSchema
+  values: PromptSchema
 ): CreatePromptDto => ({
   title: values.title.trim(),
   content: values.prompt.trim(),

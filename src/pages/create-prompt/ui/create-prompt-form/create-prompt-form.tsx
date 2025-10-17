@@ -9,11 +9,10 @@ import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
 import { Select } from '@/shared/ui/select'
 import { Textarea } from '@/shared/ui/textarea'
+import { PromptSchema, promptSchema } from '@/shared/validation'
 
 import { useCreatePrompt } from '../../api'
 import {
-  CreatePromptSchema,
-  createPromptSchema,
   defaultCreatePromptValues,
   mapCreatePromptSchemaToCreatePromptDto,
 } from '../../model'
@@ -23,15 +22,14 @@ interface CreatePromptFormProps {
 }
 
 export const CreatePromptForm = ({ onSuccess }: CreatePromptFormProps) => {
-  const { register, handleSubmit, formState, control } =
-    useForm<CreatePromptSchema>({
-      defaultValues: defaultCreatePromptValues,
-      resolver: zodResolver(createPromptSchema),
-    })
+  const { register, handleSubmit, formState, control } = useForm<PromptSchema>({
+    defaultValues: defaultCreatePromptValues,
+    resolver: zodResolver(promptSchema),
+  })
 
   const { mutate: createPrompt, isPending } = useCreatePrompt()
 
-  const onSubmit = (data: CreatePromptSchema) => {
+  const onSubmit = (data: PromptSchema) => {
     createPrompt(mapCreatePromptSchemaToCreatePromptDto(data), {
       onSuccess,
     })

@@ -26,7 +26,7 @@ export const LoginPage = () => {
 
   const onValid = (values: LoginSchema) => {
     mutate(mapLoginSchemaToLoginDto(values), {
-      onSuccess: () => router.push(routes.public.home),
+      onSuccess: () => router.replace(routes.public.home),
       onError: (error) =>
         form.setError('root', { message: translateBackendError(error) }),
     })

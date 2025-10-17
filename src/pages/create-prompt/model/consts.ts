@@ -1,7 +1,7 @@
 import { CreatePromptSchema } from './schema'
 
 export const defaultCreatePromptValues: CreatePromptSchema = {
-  category: null,
+  category: null!,
   prompt: '',
   title: '',
 }

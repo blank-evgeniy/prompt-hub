@@ -30,7 +30,7 @@ export const RegisterPage = () => {
 
   const onSubmit = (values: RegisterSchema) => {
     mutate(mapRegisterSchemaToRegisterDto(values), {
-      onSuccess: () => router.push(routes.public.home),
+      onSuccess: () => router.replace(routes.public.home),
       onError: (error) =>
         form.setError('root', { message: translateBackendError(error) }),
     })

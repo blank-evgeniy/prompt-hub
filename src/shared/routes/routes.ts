@@ -1,3 +1,5 @@
+export const profileBase = '/profile'
+
 export const routes = {
   public: {
     home: '/',
@@ -11,8 +13,11 @@ export const routes = {
   },
 
   profile: {
-    myPrompts: '/prompts',
-    createPrompt: '/prompts/create',
-    editPrompt: (id: string) => `/prompts/${id}/edit`,
+    base: profileBase,
+    myPrompts: `${profileBase}/prompts`,
+    createPrompt: `${profileBase}/prompts/create`,
+    editPrompt: (id: string) => `${profileBase}/prompts/${id}/edit`,
   },
-}
+} as const
+
+export type Routes = typeof routes

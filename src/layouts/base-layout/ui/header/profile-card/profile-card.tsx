@@ -1,6 +1,6 @@
 'use client'
 
-import { LogOutIcon } from 'lucide-react'
+import { LogOutIcon, UserIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -31,8 +31,6 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
 
   const [open, setOpen] = useState(false)
 
-  const fallbackName = username.slice(0, 1).toUpperCase()
-
   if (!data) {
     return null
   }
@@ -42,7 +40,9 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
       <SheetTrigger className={className}>
         <Avatar>
           {avatarUrl && <AvatarImage src={avatarUrl} />}
-          <AvatarFallback>{fallbackName}</AvatarFallback>
+          <AvatarFallback>
+            <UserIcon className="size-4" />
+          </AvatarFallback>
         </Avatar>
       </SheetTrigger>
       <SheetContent>
@@ -51,6 +51,15 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
         </SheetHeader>
 
         <div className="flex flex-col gap-1 px-4">
+          <Button
+            asChild
+            variant={'ghost'}
+            className="justify-start text-start"
+            onClick={() => setOpen(false)}
+          >
+            <Link href={routes.public.user(username)}>Профиль</Link>
+          </Button>
+
           <Button
             asChild
             variant={'ghost'}

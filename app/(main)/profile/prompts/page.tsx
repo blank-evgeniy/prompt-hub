@@ -7,10 +7,10 @@ import {
 import { ProfilePromptsPage } from '@/pages/profile-prompts'
 import { promptQueries } from '@/shared/api/services/prompt'
 
-export default function ListPrompts() {
+export default async function ListPrompts() {
   const queryClient = new QueryClient()
 
-  queryClient.prefetchQuery(promptQueries.profileList())
+  await queryClient.prefetchQuery(promptQueries.profileList())
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

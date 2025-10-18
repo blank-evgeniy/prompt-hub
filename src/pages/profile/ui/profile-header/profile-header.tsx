@@ -1,0 +1,61 @@
+'use client'
+
+import { CalendarIcon, UserIcon } from 'lucide-react'
+import Link from 'next/link'
+
+import { routes } from '@/shared/routes'
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
+import { Typography } from '@/shared/ui/typography'
+
+import { useUserProfile } from '../../model'
+
+export const ProfileHeader = () => {
+  const { user, isCurrentUser } = useUserProfile()
+
+  if (!user) {
+    return null
+  }
+
+  const joinDate = new Date(user.createdAt).toLocaleDateString('ru-RU', {
+    year: 'numeric',
+    month: 'long',
+  })
+
+  return (
+    <Card>
+      <CardHeader className="flex items-center justify-center">
+        <Avatar className="size-24">
+          {user.avatarUrl && <AvatarImage src={user.avatarUrl} />}
+          <AvatarFallback className="text-2xl">
+            <UserIcon className="size-12" />
+          </AvatarFallback>
+        </Avatar>
+      </CardHeader>
+      <CardContent className="flex flex-col items-center">
+        <Typography variant="h1" as="h1">
+          {user.username}
+        </Typography>
+
+        {user.bio && (
+          <Typography variant="description" className="max-w-md">
+            {user.bio}
+          </Typography>
+        )}
+
+        <div className="text-base-content/70 flex items-center justify-center gap-1 text-sm">
+          <CalendarIcon className="size-4" />
+          <span>Участник с {joinDate}</span>
+        </div>
+      </CardContent>
+      {isCurrentUser && (
+        <CardFooter>
+          <Button asChild variant="secondary">
+            <Link href={routes.profile.edit}>Редактировать профиль</Link>
+          </Button>
+        </CardFooter>
+      )}
+    </Card>
+  )
+}

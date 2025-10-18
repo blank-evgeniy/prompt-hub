@@ -5,6 +5,10 @@ export const routes = {
     home: '/',
     privacy: '/privacy',
     terms: '/terms',
+    user: (username: string) => `/user/${username}`,
+    userPrompts: (username: string) => `/user/${username}/prompts`,
+    userFollowers: (username: string) => `/user/${username}/followers`,
+    userFollowing: (username: string) => `/user/${username}/following`,
   },
 
   auth: {
@@ -13,10 +17,9 @@ export const routes = {
   },
 
   profile: {
-    base: profileBase,
+    edit: `${profileBase}/edit`,
     myPrompts: `${profileBase}/prompts`,
     createPrompt: `${profileBase}/prompts/create`,
-    editPrompt: (id: string) => `${profileBase}/prompts/${id}/edit`,
   },
 } as const
 

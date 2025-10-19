@@ -1,9 +1,6 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
-
-import { profileQueries } from '@/shared/api/services'
-import { Loader } from '@/shared/ui/loaders'
+import { useAuthStore } from '@/store/auth'
 
 import { mapUserDtoToProfileCard } from '../../../model'
 import { AuthLinks } from '../auth-links'
@@ -14,22 +11,13 @@ interface HeaderActionsProps {
 }
 
 export const HeaderActions = ({ className }: HeaderActionsProps) => {
-  const { data: profile, isLoading } = useQuery(profileQueries.me())
+  const { user, isAuth } = useAuthStore()
 
-  if (isLoading) {
-    return <Loader className={className} />
-  }
-
-  if (!profile) {
+  if (!isAuth || !user) {
     return <AuthLinks className={className} />
   }
 
-  if (profile) {
-    return (
-      <ProfileCard
-        data={mapUserDtoToProfileCard(profile)}
-        className={className}
-      />
-    )
-  }
+  return (
+    <ProfileCard data={mapUserDtoToProfileCard(user)} className={className} />
+  )
 }

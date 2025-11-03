@@ -105,13 +105,18 @@ export const EditPromptModal = ({
             )}
           />
 
-          <Textarea
-            label="Промпт"
-            placeholder="Введите текст промпта"
-            maxLength={1000}
-            message={formState.errors.prompt?.message}
-            defaultValue={prompt.content}
-            {...register('prompt')}
+          <Controller
+            control={control}
+            name="prompt"
+            render={({ field, fieldState }) => (
+              <Textarea
+                label="Промпт"
+                placeholder="Введите текст промпта"
+                maxLength={1000}
+                message={fieldState.error?.message}
+                {...field}
+              />
+            )}
           />
 
           <ModalFooter>

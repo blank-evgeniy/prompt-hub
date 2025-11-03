@@ -28,6 +28,19 @@ export const handlers = [
       promptsCount: 3,
     })
   }),
+  http.patch('*/profile/avatar/edit', () => {
+    return HttpResponse.json({
+      id: '1',
+      username: 'testuser2',
+      bio: 'This is an updated test user.',
+      createdAt: '2023-01-01T00:00:00Z',
+      updatedAt: '2023-01-01T00:00:00Z',
+      followersCount: 10,
+      followingCount: 5,
+      promptsCount: 3,
+      avatarUrl: '/images/avatars/warrior.jpg',
+    })
+  }),
 
   // Auth
   http.post('*/auth/logout', () => {

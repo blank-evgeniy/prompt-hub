@@ -39,7 +39,7 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className={className}>
         <Avatar>
-          {avatarUrl && <AvatarImage src={avatarUrl} />}
+          <AvatarImage src={avatarUrl} />
           <AvatarFallback>
             <UserIcon className="size-4" />
           </AvatarFallback>

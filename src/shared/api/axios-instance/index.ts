@@ -75,9 +75,7 @@ axiosInstance.interceptors.response.use(
       }
 
       try {
-        console.log(1)
         const response = await authApi.refresh()
-        console.log(2)
         const newAccessToken: string = response.data.accessToken
         saveAccessToken(newAccessToken)
 
@@ -88,8 +86,6 @@ axiosInstance.interceptors.response.use(
         }
         return axiosInstance(originalRequest)
       } catch (tokenError) {
-        console.log(3)
-
         processQueue(tokenError, null)
         clearAccessToken()
         return Promise.reject(tokenError)

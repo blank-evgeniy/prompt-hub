@@ -1,4 +1,5 @@
 export * from './auth'
 export * from './error'
+export * from './profile'
 export * from './prompt'
 export * from './user'

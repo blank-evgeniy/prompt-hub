@@ -20,12 +20,19 @@ function Avatar({
   )
 }
 
-function AvatarImage({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+type AvatarImageProps = Omit<
+  React.ComponentProps<typeof AvatarPrimitive.Image>,
+  'src'
+> & {
+  src?: string | null
+}
+
+function AvatarImage({ className, src, ...props }: AvatarImageProps) {
+  const fixedSrc = src ?? undefined
+
   return (
     <AvatarPrimitive.Image
+      src={fixedSrc}
       className={cn('aspect-square size-full', className)}
       {...props}
     />

@@ -59,12 +59,18 @@ export const CreatePromptForm = ({ onSuccess }: CreatePromptFormProps) => {
         )}
       />
 
-      <Textarea
-        label="Промпт"
-        placeholder="Введите текст промпта"
-        maxLength={1000}
-        message={formState.errors.prompt?.message}
-        {...register('prompt')}
+      <Controller
+        control={control}
+        name="prompt"
+        render={({ field, fieldState }) => (
+          <Textarea
+            label="Промпт"
+            placeholder="Введите текст промпта"
+            maxLength={1000}
+            message={fieldState.error?.message}
+            {...field}
+          />
+        )}
       />
 
       <Button type="submit" className="self-end" isLoading={isPending}>

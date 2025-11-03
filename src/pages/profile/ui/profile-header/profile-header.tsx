@@ -27,7 +27,7 @@ export const ProfileHeader = () => {
     <Card>
       <CardHeader className="flex items-center justify-center">
         <Avatar className="size-24">
-          {user.avatarUrl && <AvatarImage src={user.avatarUrl} />}
+          <AvatarImage src={user.avatarUrl} />
           <AvatarFallback className="text-2xl">
             <UserIcon className="size-12" />
           </AvatarFallback>

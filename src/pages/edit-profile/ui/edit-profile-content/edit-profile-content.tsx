@@ -34,7 +34,7 @@ export const EditProfileContent = () => {
 
   return (
     <div className="space-y-4">
-      <EditAvatarForm userAvatarUrl={user.avatarUrl} />
+      <EditAvatarForm avatar={user.avatar} />
       <EditProfileForm user={user} />
     </div>
   )

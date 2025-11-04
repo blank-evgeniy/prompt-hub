@@ -1,10 +1,10 @@
 'use client'
 
-import { CalendarIcon, UserIcon } from 'lucide-react'
+import { CalendarIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { routes } from '@/shared/routes'
-import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar'
+import { Avatar } from '@/shared/ui/avatar'
 import { Button } from '@/shared/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/shared/ui/card'
 import { Typography } from '@/shared/ui/typography'
@@ -26,12 +26,11 @@ export const ProfileHeader = () => {
   return (
     <Card>
       <CardHeader className="flex items-center justify-center">
-        <Avatar className="size-24">
-          <AvatarImage src={user.avatarUrl} />
-          <AvatarFallback className="text-2xl">
-            <UserIcon className="size-12" />
-          </AvatarFallback>
-        </Avatar>
+        <Avatar
+          size={'xl'}
+          src={user.avatar?.url}
+          backgroundColor={user.avatar?.color}
+        />
       </CardHeader>
       <CardContent className="flex flex-col items-center">
         <Typography variant="h1" as="h1">

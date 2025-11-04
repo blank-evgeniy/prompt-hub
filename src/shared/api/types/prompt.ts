@@ -15,7 +15,7 @@ export interface PromptResponseDto {
 }
 
 export interface PromptResponseWithAuthorDto extends PromptResponseDto {
-  author: Pick<UserResponseDto, 'username' | 'avatarUrl' | 'id'>
+  author: Pick<UserResponseDto, 'username' | 'avatar' | 'id'>
 }
 
 export interface CreatePromptDto {

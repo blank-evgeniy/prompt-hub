@@ -2,7 +2,7 @@ export interface UserResponseDto {
   id: string
   username: string
   bio?: string | null
-  avatarUrl?: string | null
+  avatar?: AvatarInfo
   createdAt: string
   updatedAt: string
   followersCount: number
@@ -11,14 +11,19 @@ export interface UserResponseDto {
   isFollowed?: boolean | null
 }
 
+export interface AvatarInfo {
+  url?: string | null
+  color?: string | null
+}
+
 export interface FollowerResponseDto {
   id: string
   username: string
-  avatarUrl?: string | null
+  avatar?: AvatarInfo
 }
 
 export interface FollowingResponseDto {
   id: string
   username: string
-  avatarUrl?: string | null
+  avatar?: AvatarInfo
 }

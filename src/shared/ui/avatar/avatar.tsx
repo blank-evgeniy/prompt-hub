@@ -1,57 +1,61 @@
 'use client'
-
-import * as AvatarPrimitive from '@radix-ui/react-avatar'
+import { cva, VariantProps } from 'class-variance-authority'
+import { UserIcon } from 'lucide-react'
 import * as React from 'react'
 
 import { cn } from '@/shared/utils/cn'
 
-function Avatar({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
-  return (
-    <AvatarPrimitive.Root
-      className={cn(
-        'relative flex size-8 shrink-0 overflow-hidden rounded-full border',
-        className
-      )}
-      {...props}
-    />
-  )
-}
+const avatarVariants = cva(
+  'rounded-full overflow-hidden flex items-center justify-center shrink-0 aspect-square',
+  {
+    variants: {
+      size: {
+        sm: 'size-8 p-1',
+        md: 'size-10 p-1',
+        lg: 'size-16 p-3',
+        xl: 'size-24 p-4',
+        '2xl': 'size-32 p-6',
+      },
+      variant: {
+        circle: 'rounded-full',
+        square: 'rounded-md',
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+      variant: 'circle',
+    },
+  }
+)
 
-type AvatarImageProps = Omit<
-  React.ComponentProps<typeof AvatarPrimitive.Image>,
-  'src'
-> & {
+type AvatarProps = {
   src?: string | null
-}
+  backgroundColor?: string | null
+  className?: string
+} & VariantProps<typeof avatarVariants> &
+  React.HTMLAttributes<HTMLDivElement>
 
-function AvatarImage({ className, src, ...props }: AvatarImageProps) {
-  const fixedSrc = src ?? undefined
-
-  return (
-    <AvatarPrimitive.Image
-      src={fixedSrc}
-      className={cn('aspect-square size-full', className)}
-      {...props}
-    />
-  )
-}
-
-function AvatarFallback({
+export const Avatar = ({
   className,
+  src,
+  size,
+  variant,
+  backgroundColor,
   ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+}: AvatarProps) => {
+  const bgColorCn = backgroundColor ?? 'bg-primary'
+
   return (
-    <AvatarPrimitive.Fallback
-      className={cn(
-        'bg-base-300 text-base-content flex size-full items-center justify-center rounded-full',
-        className
-      )}
+    <div
+      className={cn(avatarVariants({ size, variant, className }), bgColorCn)}
       {...props}
-    />
+    >
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={src} alt="Avatar" className="size-full object-cover" />
+      ) : (
+        <UserIcon className="size-full text-black" />
+      )}
+    </div>
   )
 }
-
-export { Avatar, AvatarFallback, AvatarImage }

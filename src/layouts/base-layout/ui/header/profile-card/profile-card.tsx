@@ -1,11 +1,11 @@
 'use client'
 
-import { LogOutIcon, UserIcon } from 'lucide-react'
+import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
 import { routes } from '@/shared/routes'
-import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar'
+import { Avatar } from '@/shared/ui/avatar'
 import { Button } from '@/shared/ui/button'
 import {
   Sheet,
@@ -27,7 +27,7 @@ interface ProfileCardProps {
 
 export const ProfileCard = ({ className, data }: ProfileCardProps) => {
   const { mutate, isPending } = useLogout()
-  const { username, avatarUrl } = data
+  const { username, avatar } = data
 
   const [open, setOpen] = useState(false)
 
@@ -38,12 +38,7 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className={className}>
-        <Avatar>
-          <AvatarImage src={avatarUrl} />
-          <AvatarFallback>
-            <UserIcon className="size-4" />
-          </AvatarFallback>
-        </Avatar>
+        <Avatar src={avatar?.url} backgroundColor={avatar?.color} />
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>

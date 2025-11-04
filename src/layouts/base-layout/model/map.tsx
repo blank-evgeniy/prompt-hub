@@ -7,6 +7,6 @@ export const mapUserDtoToProfileCard = (
 ): ProfileCardData => {
   return {
     username: profile.username,
-    avatarUrl: profile.avatarUrl,
+    avatar: profile.avatar,
   }
 }

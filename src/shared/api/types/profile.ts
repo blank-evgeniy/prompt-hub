@@ -4,5 +4,6 @@ export interface UpdateProfileDto {
 }
 
 export interface UpdateAvatarDto {
-  avatarUrl: string | null
+  url: string | null
+  color?: string | null
 }

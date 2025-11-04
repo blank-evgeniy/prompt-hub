@@ -15,10 +15,13 @@ export const useEditAvatar = () => {
         profileQueries.meKey(),
         (old) => {
           if (!old) return old
-          return { ...old, avatarUrl: variables.avatarUrl }
+          return {
+            ...old,
+            avatar: { url: variables.url, color: variables.color },
+          }
         }
       )
-      updateUser(variables)
+      updateUser({ avatar: { url: variables.url, color: variables.color } })
     },
   })
 }

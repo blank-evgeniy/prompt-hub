@@ -1,4 +1,4 @@
-import { PromptSchema } from '@/shared/validation'
+import { PromptSchema } from '@/entities/prompt'
 
 export const defaultCreatePromptValues: PromptSchema = {
   category: null!,

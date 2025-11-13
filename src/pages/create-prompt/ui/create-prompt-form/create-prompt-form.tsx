@@ -4,12 +4,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { PlusIcon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { PromptSchema, promptSchema } from '@/entities/prompt'
 import { promptCategoryOptions } from '@/shared/consts'
 import { Button } from '@/shared/ui/button'
 import { Input } from '@/shared/ui/input'
 import { Select } from '@/shared/ui/select'
 import { Textarea } from '@/shared/ui/textarea'
-import { PromptSchema, promptSchema } from '@/shared/validation'
 
 import { useCreatePrompt } from '../../api'
 import {

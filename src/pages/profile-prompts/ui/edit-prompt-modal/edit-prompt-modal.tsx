@@ -5,6 +5,7 @@ import { EditIcon } from 'lucide-react'
 import * as React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
+import { PromptSchema, promptSchema } from '@/entities/prompt'
 import { PromptCategory } from '@/shared/api/types'
 import { promptCategoryOptions } from '@/shared/consts'
 import { Button } from '@/shared/ui/button'
@@ -19,7 +20,6 @@ import {
 } from '@/shared/ui/modal'
 import { Select } from '@/shared/ui/select'
 import { Textarea } from '@/shared/ui/textarea'
-import { PromptSchema, promptSchema } from '@/shared/validation'
 
 import { useEditPrompt } from '../../api'
 import { ProfilePrompt } from '../../model'

@@ -1,5 +1,5 @@
+import { PromptSchema } from '@/entities/prompt'
 import { CreatePromptDto, PromptCategory } from '@/shared/api/types'
-import { PromptSchema } from '@/shared/validation'
 
 export const mapCreatePromptSchemaToCreatePromptDto = (
   values: PromptSchema

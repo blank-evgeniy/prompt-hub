@@ -10,7 +10,7 @@ import { HeaderActions } from './header-actions'
 
 export const Header = () => {
   return (
-    <header className="border-b">
+    <header className="h-[var(--header-height)] border-b">
       <Container className="flex items-center gap-8 py-2">
         <div className="flex items-center gap-2">
           <Link

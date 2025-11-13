@@ -4,6 +4,7 @@ import { Typography } from '../typography'
 export type ListStateProps<T> = {
   items: T[]
   isLoading?: boolean
+  isLoadingMore?: boolean
   isError?: boolean
   containerClassName?: string
   errorSlot?: React.ReactNode
@@ -15,6 +16,7 @@ export type ListStateProps<T> = {
 export const ListState = <T,>({
   items,
   isLoading,
+  isLoadingMore,
   isError,
   errorSlot,
   loadingSlot,
@@ -46,5 +48,10 @@ export const ListState = <T,>({
     )
   }
 
-  return <div className={containerClassName}>{items.map(children)}</div>
+  return (
+    <div className={containerClassName}>
+      {items.map(children)}
+      {isLoadingMore && <Loader className="mx-auto mt-4" />}
+    </div>
+  )
 }

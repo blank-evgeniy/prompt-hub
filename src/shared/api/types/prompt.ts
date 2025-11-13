@@ -14,6 +14,14 @@ export interface PromptResponseDto {
   isLiked: boolean
 }
 
+export interface GetPromptsParams {
+  limit?: number
+  page?: number
+  category?: PromptCategory
+  sortBy?: 'title' | 'createdAt' | 'updatedAt'
+  order?: 'asc' | 'desc'
+}
+
 export interface PromptResponseWithAuthorDto extends PromptResponseDto {
   author: Pick<UserResponseDto, 'username' | 'avatar' | 'id'>
 }

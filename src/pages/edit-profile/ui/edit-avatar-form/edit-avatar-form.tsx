@@ -54,7 +54,7 @@ export const EditAvatarForm = ({ avatar }: EditAvatarFormProps) => {
 
         <div className="flex flex-col gap-4">
           <Typography variant="h3">Изображение</Typography>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-4 gap-3 sm:flex">
             {AVATARS.map((avatar, index) => (
               <button key={index}>
                 <Avatar
@@ -77,7 +77,7 @@ export const EditAvatarForm = ({ avatar }: EditAvatarFormProps) => {
 
         <div className="flex flex-col gap-4">
           <Typography variant="h3">Фон</Typography>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-4 gap-3 sm:flex">
             {AVATAR_BG_COLORS.map((color, index) => (
               <button key={index}>
                 <div
@@ -97,7 +97,7 @@ export const EditAvatarForm = ({ avatar }: EditAvatarFormProps) => {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex-row justify-end">
+      <CardFooter className="justify-end sm:flex-row">
         <Button
           variant="destructive"
           disabled={isPending}

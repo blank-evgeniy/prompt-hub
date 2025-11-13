@@ -1,22 +1,16 @@
-import { queryOptions } from '@tanstack/react-query'
+import { infiniteQueryOptions, queryOptions } from '@tanstack/react-query'
 
 import axiosInstance from '../axios-instance'
 import {
   CreatePromptDto,
-  PromptCategory,
+  GetPromptsParams,
   PromptResponseDto,
   PromptResponseWithAuthorDto,
   UpdatePromptDto,
 } from '../types'
 
 export const promptApi = {
-  list: async (params?: {
-    limit?: number
-    page?: number
-    category?: PromptCategory
-    sortBy?: 'title' | 'createdAt' | 'updatedAt'
-    order?: 'asc' | 'desc'
-  }) =>
+  list: async (params?: GetPromptsParams) =>
     (
       await axiosInstance.get<PromptResponseWithAuthorDto[]>('/prompt', {
         params,
@@ -43,6 +37,24 @@ export const promptApi = {
 
 export const promptQueries = {
   baseKey: () => ['prompts'],
+
+  promptsListKey: (params: Omit<GetPromptsParams, 'page'>) => [
+    ...promptQueries.baseKey(),
+    'list',
+    params,
+  ],
+  promptsList: (params: Omit<GetPromptsParams, 'page'>) =>
+    infiniteQueryOptions({
+      queryKey: promptQueries.promptsListKey(params),
+      queryFn: ({ pageParam = 1 }) =>
+        promptApi.list({ page: pageParam, ...params }),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage, allPages, lastPageParam) => {
+        if (lastPage.length === 0) return undefined
+        return lastPageParam + 1
+      },
+      select: (result) => result.pages.flatMap((page) => page),
+    }),
 
   profileListKey: () => [...promptQueries.baseKey(), 'list'],
   profileList: () =>

@@ -31,7 +31,7 @@ export const PromptFilters = ({
   }
 
   return (
-    <Card className="!sticky top-12 flex w-xs shrink-0">
+    <Card className="!sticky top-4 flex w-xs shrink-0">
       <CardContent>
         <Select
           label="Категория"

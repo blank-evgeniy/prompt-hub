@@ -9,9 +9,10 @@ import { CopyButton } from '@/shared/ui/copy-button'
 interface PromptCardProps {
   prompt: Prompt
   author: User
+  isLiked: boolean
 }
 
-export const PromptCard = ({ prompt, author }: PromptCardProps) => {
+export const PromptCard = ({ prompt, author, isLiked }: PromptCardProps) => {
   return (
     <BasePromptCard
       data={prompt}
@@ -32,7 +33,7 @@ export const PromptCard = ({ prompt, author }: PromptCardProps) => {
             size={'icon'}
             variant={'accent'}
           />
-          <LikePrompt />
+          <LikePrompt promptId={prompt.id} isLiked={isLiked} />
         </>
       }
     />

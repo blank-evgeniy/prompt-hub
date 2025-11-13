@@ -53,6 +53,7 @@ export const PromptList = ({ filters }: PromptListProps) => {
         {(prompt) => (
           <PromptCard
             key={prompt.id}
+            isLiked={prompt.isLiked}
             prompt={mapPromptResponse(prompt)}
             author={mapPromptAuthorResponse(prompt.author)}
           />

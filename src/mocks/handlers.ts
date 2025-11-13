@@ -57,6 +57,32 @@ export const handlers = [
   }),
 
   // Prompts
+  http.get('*/prompt', () => {
+    return HttpResponse.json([
+      {
+        id: '1',
+        title: 'Test Prompt 1',
+        content: 'This is a test prompt.',
+        category: 'TEXT',
+        authorId: '1',
+        createdAt: '2023-01-01T00:00:00Z',
+        updatedAt: '2023-01-01T00:00:00Z',
+        likesCount: 5,
+        isLiked: true,
+      },
+      {
+        id: '2',
+        title: 'Test Prompt 2',
+        content: 'This is another test prompt.',
+        category: 'IMAGE',
+        authorId: '1',
+        createdAt: '2023-01-01T00:00:00Z',
+        updatedAt: '2023-01-01T00:00:00Z',
+        likesCount: 3,
+        isLiked: false,
+      },
+    ])
+  }),
   http.get('*/prompt/me', () => {
     return HttpResponse.json([
       {
@@ -115,6 +141,12 @@ export const handlers = [
     })
   }),
   http.delete('*/prompt/:id', () => {
+    return HttpResponse.json({ success: true })
+  }),
+  http.post('*/prompts/:id/like', () => {
+    return HttpResponse.json({ success: true })
+  }),
+  http.post('*/prompts/:id/dislike', () => {
     return HttpResponse.json({ success: true })
   }),
 ]

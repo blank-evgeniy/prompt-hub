@@ -20,10 +20,12 @@ export interface FollowerResponseDto {
   id: string
   username: string
   avatar?: AvatarInfo
+  bio?: string
 }
 
 export interface FollowingResponseDto {
   id: string
   username: string
   avatar?: AvatarInfo
+  bio?: string
 }

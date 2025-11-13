@@ -3,6 +3,7 @@
 import { CalendarIcon } from 'lucide-react'
 import Link from 'next/link'
 
+import { FollowUser } from '@/features/follow-user'
 import { routes } from '@/shared/routes'
 import { Avatar } from '@/shared/ui/avatar'
 import { Button } from '@/shared/ui/button'
@@ -48,13 +49,21 @@ export const ProfileHeader = () => {
           <span>Участник с {joinDate}</span>
         </div>
       </CardContent>
-      {isCurrentUser && (
-        <CardFooter>
+
+      <CardFooter>
+        {isCurrentUser ? (
           <Button asChild variant="secondary">
             <Link href={routes.profile.edit}>Редактировать профиль</Link>
           </Button>
-        </CardFooter>
-      )}
+        ) : (
+          <FollowUser
+            onFollow={() => {}}
+            onUnfollow={() => {}}
+            isFollowed={Boolean(user.isFollowed)}
+            userId={user.id}
+          />
+        )}
+      </CardFooter>
     </Card>
   )
 }

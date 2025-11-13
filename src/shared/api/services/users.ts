@@ -47,4 +47,28 @@ export const usersQueries = {
       queryFn: () => usersApi.getOne(username),
       retry: 1,
     }),
+
+  followersKey: (username: string) => [
+    usersQueries.baseKey,
+    'followers',
+    username,
+  ],
+  followers: (username: string) =>
+    queryOptions({
+      queryKey: usersQueries.followersKey(username),
+      queryFn: () => usersApi.getFollowers(username),
+      retry: 1,
+    }),
+
+  followingKey: (username: string) => [
+    usersQueries.baseKey,
+    'following',
+    username,
+  ],
+  following: (username: string) =>
+    queryOptions({
+      queryKey: usersQueries.followingKey(username),
+      queryFn: () => usersApi.getFollowing(username),
+      retry: 1,
+    }),
 }

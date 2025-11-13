@@ -25,5 +25,6 @@ export const Default: Story = {
       name: 'John Doe',
       description: 'Enthusiastic writer and storyteller.',
     },
+    isLiked: false,
   },
 }

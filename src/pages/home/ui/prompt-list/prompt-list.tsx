@@ -6,11 +6,11 @@ import { useInView } from 'react-intersection-observer'
 
 import { mapPromptResponse } from '@/entities/prompt'
 import { mapPromptAuthorResponse } from '@/entities/user'
-import { promptQueries } from '@/shared/api/services/prompt'
+import { promptQueries } from '@/shared/api/services'
 import { ListState } from '@/shared/ui/list-state'
 
 import { PromptsFiltersSchema } from '../../model'
-import { PromptCard } from '../prompt-card/prompt-card'
+import { PromptCard } from '../prompt-card'
 
 interface PromptListProps {
   filters: PromptsFiltersSchema

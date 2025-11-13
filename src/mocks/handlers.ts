@@ -57,14 +57,25 @@ export const handlers = [
   }),
 
   // Prompts
-  http.get('*/prompt', () => {
+  http.get('*/prompt', (req) => {
+    const url = new URL(req.request.url)
+    const page = Number(url.searchParams.get('page'))
+
+    if (page !== 1) {
+      return HttpResponse.json([])
+    }
+
     return HttpResponse.json([
       {
         id: '1',
         title: 'Test Prompt 1',
         content: 'This is a test prompt.',
         category: 'TEXT',
-        authorId: '1',
+        author: {
+          id: '1',
+          username: 'John Doe',
+          bio: 'Enthusiastic writer and storyteller.',
+        },
         createdAt: '2023-01-01T00:00:00Z',
         updatedAt: '2023-01-01T00:00:00Z',
         likesCount: 5,
@@ -75,7 +86,11 @@ export const handlers = [
         title: 'Test Prompt 2',
         content: 'This is another test prompt.',
         category: 'IMAGE',
-        authorId: '1',
+        author: {
+          id: '1',
+          username: 'John Doe',
+          bio: 'Enthusiastic writer and storyteller.',
+        },
         createdAt: '2023-01-01T00:00:00Z',
         updatedAt: '2023-01-01T00:00:00Z',
         likesCount: 3,

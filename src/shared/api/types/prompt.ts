@@ -18,9 +18,12 @@ export interface GetPromptsParams {
   limit?: number
   page?: number
   category?: PromptCategory
-  sortBy?: 'title' | 'createdAt' | 'updatedAt'
-  order?: 'asc' | 'desc'
+  sortBy?: PromptsSortBy
+  order?: PromptsSortOrder
 }
+
+export type PromptsSortBy = 'title' | 'createdAt' | 'updatedAt'
+export type PromptsSortOrder = 'asc' | 'desc'
 
 export interface PromptResponseWithAuthorDto extends PromptResponseDto {
   author: Pick<UserResponseDto, 'username' | 'avatar' | 'id'>

@@ -9,9 +9,14 @@ import { mapPromptAuthorResponse } from '@/entities/user'
 import { promptQueries } from '@/shared/api/services/prompt'
 import { ListState } from '@/shared/ui/list-state'
 
+import { PromptsFiltersSchema } from '../../model'
 import { PromptCard } from '../prompt-card/prompt-card'
 
-export const PromptList = () => {
+interface PromptListProps {
+  filters: PromptsFiltersSchema
+}
+
+export const PromptList = ({ filters }: PromptListProps) => {
   const {
     data: prompts,
     isLoading,
@@ -19,7 +24,14 @@ export const PromptList = () => {
     isError,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery(promptQueries.promptsList({ limit: 10 }))
+  } = useInfiniteQuery(
+    promptQueries.promptsList({
+      limit: 10,
+      category: filters.category ?? undefined,
+      sortBy: filters.sortBy,
+      order: filters.order,
+    })
+  )
 
   const { ref, inView } = useInView({ threshold: 0.5 })
 
@@ -30,7 +42,7 @@ export const PromptList = () => {
   }, [inView, fetchNextPage, hasNextPage, isFetchingNextPage])
 
   return (
-    <div>
+    <div className="flex flex-1">
       <ListState
         containerClassName="flex flex-col gap-4 flex-1"
         items={prompts ?? []}

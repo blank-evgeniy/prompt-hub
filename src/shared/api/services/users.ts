@@ -71,4 +71,12 @@ export const usersQueries = {
       queryFn: () => usersApi.getFollowing(username),
       retry: 1,
     }),
+
+  promptsKey: (username: string) => [usersQueries.baseKey, 'prompts', username],
+  prompts: (username: string) =>
+    queryOptions({
+      queryKey: usersQueries.promptsKey(username),
+      queryFn: () => usersApi.getPrompts(username),
+      retry: 1,
+    }),
 }

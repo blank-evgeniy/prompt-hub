@@ -17,11 +17,11 @@ import {
 import { ListState } from '@/shared/ui/list-state'
 import { Typography } from '@/shared/ui/typography'
 
-interface ProfilePageProps {
+interface UserFollowingPageProps {
   username: string
 }
 
-export const UserFollowingPage = ({ username }: ProfilePageProps) => {
+export const UserFollowingPage = ({ username }: UserFollowingPageProps) => {
   const { data, isLoading } = useQuery(usersQueries.following(username))
 
   return (
@@ -45,7 +45,11 @@ export const UserFollowingPage = ({ username }: ProfilePageProps) => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <ListState items={data ?? []} isLoading={isLoading}>
+      <ListState
+        items={data ?? []}
+        isLoading={isLoading}
+        containerClassName="flex flex-col gap-4"
+      >
         {(user) => <UserCard key={user.id} data={mapFollowerResponse(user)} />}
       </ListState>
     </main>

@@ -8,7 +8,7 @@ import { UserFollowersPage } from '@/pages/user-followers'
 import { usersQueries } from '@/shared/api/services'
 import { PageParams } from '@/shared/types'
 
-const User = async ({ params }: PageParams<{ username: string }>) => {
+const Page = async ({ params }: PageParams<{ username: string }>) => {
   const { username } = await params
 
   const queryClient = new QueryClient()
@@ -22,4 +22,4 @@ const User = async ({ params }: PageParams<{ username: string }>) => {
   )
 }
 
-export default User
+export default Page

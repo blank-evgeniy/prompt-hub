@@ -2,8 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 
-import { UserCard } from '@/entities/user'
-import { mapFollowerResponse } from '@/entities/user/model/map'
+import { mapPromptResponse } from '@/entities/prompt'
 import { usersQueries } from '@/shared/api/services'
 import { routes } from '@/shared/routes'
 import {
@@ -17,17 +16,19 @@ import {
 import { ListState } from '@/shared/ui/list-state'
 import { Typography } from '@/shared/ui/typography'
 
-interface UserFollowersPageProps {
+import { PromptCard } from './prompt-card'
+
+interface UserPromptsPageProps {
   username: string
 }
 
-export const UserFollowersPage = ({ username }: UserFollowersPageProps) => {
-  const { data, isLoading } = useQuery(usersQueries.followers(username))
+export const UserPromptsPage = ({ username }: UserPromptsPageProps) => {
+  const { data, isLoading } = useQuery(usersQueries.prompts(username))
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-8">
       <Typography className="sr-only" as="h1">
-        Подписчики
+        Промпты
       </Typography>
       <Breadcrumb>
         <BreadcrumbList>
@@ -40,7 +41,7 @@ export const UserFollowersPage = ({ username }: UserFollowersPageProps) => {
           <BreadcrumbSeparator />
 
           <BreadcrumbItem>
-            <BreadcrumbPage>Подписчики</BreadcrumbPage>
+            <BreadcrumbPage>Промпты</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -50,7 +51,13 @@ export const UserFollowersPage = ({ username }: UserFollowersPageProps) => {
         isLoading={isLoading}
         containerClassName="flex flex-col gap-4"
       >
-        {(user) => <UserCard key={user.id} data={mapFollowerResponse(user)} />}
+        {(prompt) => (
+          <PromptCard
+            key={prompt.id}
+            isLiked={prompt.isLiked}
+            prompt={mapPromptResponse(prompt)}
+          />
+        )}
       </ListState>
     </main>
   )

@@ -13,3 +13,16 @@ export const requiredOption = (message = 'Выберите значение') =>
     },
     { message }
   )
+
+export const usernameSchema = z
+  .string()
+  .min(3, {
+    message: 'Поле должно содержать не менее 3 символов',
+  })
+  .max(32, {
+    message: 'Поле должно содержать не более 32 символов',
+  })
+  .regex(/^[a-zA-Z0-9_-]+$/, {
+    message:
+      'Поле может содержать только латинские буквы, цифры, символы "_" и "-"',
+  })

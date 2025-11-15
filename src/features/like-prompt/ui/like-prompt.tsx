@@ -1,6 +1,7 @@
 import { HeartIcon, LoaderIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import { useAuthToast } from '@/shared/hooks'
 import { Button } from '@/shared/ui/button'
 
 import { useDislike, useLike } from '../api'
@@ -18,16 +19,24 @@ export const LikePrompt = ({
   onLike,
   onDislike,
 }: LikePromptProps) => {
+  const { ensureAuth, isAuth } = useAuthToast()
+
   const [isLikedLocal, setIsLikedLocal] = useState(isLiked)
 
   useEffect(() => {
     setIsLikedLocal(isLiked)
   }, [isLiked])
 
+  useEffect(() => {
+    if (!isAuth) setIsLikedLocal(false)
+  }, [isAuth])
+
   const { mutate: like, isPending: isLikePending } = useLike()
   const { mutate: dislike, isPending: isDislikePending } = useDislike()
 
   const handleClick = () => {
+    if (!ensureAuth()) return
+
     if (isLikedLocal) {
       dislike(promptId, {
         onSuccess: () => {

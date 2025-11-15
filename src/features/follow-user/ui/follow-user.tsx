@@ -1,6 +1,7 @@
 import { HeartCrackIcon, HeartIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import { useAuthToast } from '@/shared/hooks'
 import { Button } from '@/shared/ui/button'
 
 import { useFollow, useUnfollow } from '../api'
@@ -18,6 +19,7 @@ export const FollowUser = ({
   onFollow,
   onUnfollow,
 }: LikePromptProps) => {
+  const { ensureAuth } = useAuthToast()
   const [isFollowedLocal, setIsFollowedLocal] = useState(isFollowed)
 
   useEffect(() => {
@@ -28,6 +30,8 @@ export const FollowUser = ({
   const { mutate: unfollow, isPending: isDislikePending } = useUnfollow()
 
   const handleClick = () => {
+    if (!ensureAuth()) return
+
     if (isFollowedLocal) {
       unfollow(userId, {
         onSuccess: () => {
@@ -55,13 +59,9 @@ export const FollowUser = ({
       isLoading={isPending}
     >
       {isFollowedLocal ? (
-        <>
-          Отписаться <HeartCrackIcon />
-        </>
+        <>Отписаться {!isPending && <HeartCrackIcon />}</>
       ) : (
-        <>
-          Подписаться <HeartIcon />
-        </>
+        <>Подписаться {!isPending && <HeartIcon />}</>
       )}
     </Button>
   )

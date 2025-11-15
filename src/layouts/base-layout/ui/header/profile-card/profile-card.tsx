@@ -4,18 +4,17 @@ import { LogOutIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { routes } from '@/shared/routes'
+import { profileLinks } from '@/entities/profile'
 import { Avatar } from '@/shared/ui/avatar'
-import { Button } from '@/shared/ui/button'
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/shared/ui/sheet'
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/shared/ui/dropdown'
 
 import { useLogout } from '../../../api'
 import { ProfileCardData } from '../../../model'
@@ -26,7 +25,7 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = ({ className, data }: ProfileCardProps) => {
-  const { mutate, isPending } = useLogout()
+  const { mutate: logout, isPending } = useLogout()
   const { username, avatar } = data
 
   const [open, setOpen] = useState(false)
@@ -36,57 +35,35 @@ export const ProfileCard = ({ className, data }: ProfileCardProps) => {
   }
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger className={className}>
+    <DropdownMenu modal={false} open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger className={className}>
         <Avatar src={avatar?.url} backgroundColor={avatar?.color} />
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>{username}</SheetTitle>
-        </SheetHeader>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent sideOffset={2} align="end">
+        <DropdownMenuLabel>{username}</DropdownMenuLabel>
 
-        <div className="flex flex-col gap-1 px-4">
-          <Button
-            asChild
-            variant={'ghost'}
-            className="justify-start text-start"
-            onClick={() => setOpen(false)}
-          >
-            <Link href={routes.public.user(username)}>Профиль</Link>
-          </Button>
+        <DropdownMenuGroup>
+          {profileLinks(username).map((link) => (
+            <DropdownMenuItem key={link.href} asChild>
+              <Link href={link.href}>
+                {link.icon}
+                {link.label}
+              </Link>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
 
-          <Button
-            asChild
-            variant={'ghost'}
-            className="justify-start text-start"
-            onClick={() => setOpen(false)}
-          >
-            <Link href={routes.profile.createPrompt}>Создать промпт</Link>
-          </Button>
+        <DropdownMenuSeparator />
 
-          <Button
-            asChild
-            variant={'ghost'}
-            className="justify-start text-start"
-            onClick={() => setOpen(false)}
-          >
-            <Link href={routes.profile.myPrompts}>Мои промпты</Link>
-          </Button>
-        </div>
-
-        <SheetFooter>
-          <Button
-            variant={'destructive'}
-            disabled={isPending}
-            onClick={() => mutate()}
-          >
-            <LogOutIcon />
-            Выйти
-          </Button>
-        </SheetFooter>
-
-        <SheetDescription className="sr-only">Меню профиля</SheetDescription>
-      </SheetContent>
-    </Sheet>
+        <DropdownMenuItem
+          variant="destructive"
+          onClick={() => logout()}
+          disabled={isPending}
+        >
+          <LogOutIcon />
+          Выйти
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

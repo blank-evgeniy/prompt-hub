@@ -1,6 +1,6 @@
 'use client'
 
-import { FileTextIcon } from 'lucide-react'
+import { HeartIcon, ListIcon, PencilIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { routes } from '@/shared/routes'
@@ -19,15 +19,22 @@ export const ProfileActions = () => {
         <div className="grid gap-3">
           <Button asChild size="lg" className="justify-start">
             <Link href={routes.profile.createPrompt}>
-              <FileTextIcon className="size-5" />
+              <PencilIcon className="size-5" />
               Создать новый промпт
             </Link>
           </Button>
 
           <Button asChild variant="outline" size="lg" className="justify-start">
             <Link href={routes.profile.myPrompts}>
-              <FileTextIcon className="size-5" />
+              <ListIcon className="size-5" />
               Мои промпты
+            </Link>
+          </Button>
+
+          <Button asChild variant="outline" size="lg" className="justify-start">
+            <Link href={routes.profile.favorites}>
+              <HeartIcon className="size-5" />
+              Избранное
             </Link>
           </Button>
         </div>

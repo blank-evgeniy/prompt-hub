@@ -20,6 +20,7 @@ export const routes = {
     edit: `${profileBase}/edit`,
     myPrompts: `${profileBase}/prompts`,
     createPrompt: `${profileBase}/prompts/create`,
+    favorites: '/favorites',
   },
 } as const
 

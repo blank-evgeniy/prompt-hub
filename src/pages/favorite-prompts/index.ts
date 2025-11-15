@@ -1,0 +1,1 @@
+export { FavoritePromptsPage } from './ui'

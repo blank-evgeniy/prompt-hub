@@ -8,9 +8,16 @@ import { useDislike, useLike } from '../api'
 interface LikePromptProps {
   promptId: string
   isLiked: boolean
+  onLike?: () => void
+  onDislike?: () => void
 }
 
-export const LikePrompt = ({ isLiked, promptId }: LikePromptProps) => {
+export const LikePrompt = ({
+  isLiked,
+  promptId,
+  onLike,
+  onDislike,
+}: LikePromptProps) => {
   const [isLikedLocal, setIsLikedLocal] = useState(isLiked)
 
   useEffect(() => {
@@ -23,11 +30,17 @@ export const LikePrompt = ({ isLiked, promptId }: LikePromptProps) => {
   const handleClick = () => {
     if (isLikedLocal) {
       dislike(promptId, {
-        onSuccess: () => setIsLikedLocal(false),
+        onSuccess: () => {
+          setIsLikedLocal(false)
+          onDislike?.()
+        },
       })
     } else {
       like(promptId, {
-        onSuccess: () => setIsLikedLocal(true),
+        onSuccess: () => {
+          setIsLikedLocal(true)
+          onLike?.()
+        },
       })
     }
   }

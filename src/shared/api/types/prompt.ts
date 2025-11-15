@@ -20,6 +20,7 @@ export interface GetPromptsParams {
   category?: PromptCategory
   sortBy?: PromptsSortBy
   order?: PromptsSortOrder
+  favoritesOnly?: boolean
 }
 
 export type PromptsSortBy = 'title' | 'createdAt' | 'updatedAt'
